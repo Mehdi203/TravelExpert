@@ -1,0 +1,35 @@
+extends layout
+
+block content
+        // Marketing section
+        .banner
+          .card.bg-dark.text-white
+            img#mybanner.card-img(src='/images/marketing.jpg' alt='marketing')
+            .card-img-overlay
+             
+              h5.card-title City breaks to suit every style!
+              p.card-text
+                | Make the most of your vacation time with our selection  
+                br
+                |of getaway options fit for summer fun
+
+              
+
+
+        .container.my-5
+            if !hideLogin
+                
+                    form.row.g-3(action="/login" method="POST")
+                        .col
+                            h5 Please Log In
+                        .col            
+                            input.form-control(name="username" placeholder="Username" type="text")
+                        .col
+                            input.form-control(name="password" type="password" placeholder="Password")
+                        .col
+                            button.btn.btn-primary.mb-2 Log In
+
+            a.float-end(href="/users/sign-up") 
+                h5 Register
+           
+

@@ -1,0 +1,28 @@
+//- extends layout
+
+//- block content
+//-   h1= message
+//-   h2= error.status
+//-   pre #{error.stack}
+
+extends layout
+
+block content
+
+    
+    .banner
+      .card.bg-dark.text-white
+        img#mybanner.card-img(src='/images/pexels-alexandr-podvalny-1003864.jpg' alt='marketing')
+        .card-img-overlay
+          h5.card-title Thank you #{fname} for contacting us! 
+          p.card-text We'll get back to you soon.
+
+          a(href="/") Home
+
+
+
+
+
+
+
+

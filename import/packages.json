@@ -1,0 +1,25 @@
+[{
+  "_id": {
+    "$oid": "60fb4e2d52295ac14443489f"
+  },
+  "packageid": 1,
+  "PkgName": "Caribbean New Year",
+  "PkgBasePrice": 2500,
+  "imagpath": "/images/Canada.jpg"
+},{
+  "_id": {
+    "$oid": "60fb4e4a52295ac1444348a0"
+  },
+  "packageid": 2,
+  "PkgName": "Polynesian Paradise",
+  "PkgBasePrice": 3000,
+  "imagpath": "/images/mexico.jpg"
+},{
+  "_id": {
+    "$oid": "60fb4e5e52295ac1444348a1"
+  },
+  "packageid": 3,
+  "PkgName": "Polynesian Paradise",
+  "PkgBasePrice": 4000,
+  "imagpath": "/images/Africa2.jpg"
+}]

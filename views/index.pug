@@ -1,0 +1,75 @@
+extends layout
+
+block content
+
+
+        // Marketing section
+        
+        .banner
+          .card.bg-dark.text-white
+            img#mybanner.card-img(src='/images/marketing.jpg' alt='marketing')
+            .card-img-overlay
+             
+              h5.card-title City breaks to suit every style!
+              p.card-text
+                | Make the most of your vacation time with our selection  
+                br
+                |of getaway options fit for summer fun
+
+                p=dt
+          
+               
+              
+        .card.welcomeuser(style='width: 18rem;')
+          img.card-img-top(src='/images/greeting.jpg' alt='...')
+          .card-body.text-center
+            p.text-center
+              h2 #{greet}
+        
+
+
+        // Travel Packages
+        // Canada, us, mexico, caribbean, europe, africa
+        #mypackage.container
+          h1 Planning for your next trip! We are here for you!
+          .row
+            .col-12.col-md-4
+              .card.h-100
+                a.card-block.stretched-link.text-decoration-none(href='/packages')
+                  img.card-img-top(src='/images/Canada.jpg' alt='canada')
+                  .card-body
+                    h5.card-title.colorindexpage North America
+                    p.card-text.colorindexpage
+                      |North America is vast, diverse, and stunning and your Liberty
+                      | Travel consultant can help you explore it. Go from the peaks of Banff and 
+                      | Lake Louise to the charming seaside towns of Nova Scotia in Canada. Enjoy a 
+                      | vacation in cities like Toronto and Montréal, or head to the United States and 
+                      | discover New York, San Francisco, or Las Vegas. 
+
+                    // <button class="btn btn-primary" type="submit">Select</button>
+
+            .col-12.col-md-4
+              .card.h-100
+                a.card-block.stretched-link.text-decoration-none(href='/packages')
+                  img.card-img-top(src='/images/Caribbean.jpg' alt='...')
+                  .card-body
+                    h5.card-title.colorindexpage Caribbean
+                    p.card-text.colorindexpage
+                      | Turquoise water, brilliant coral reefs, white-sand beaches, and sun-soaked adventures 
+                      |await you in the Caribbean. From Latin beats to relaxing reggae, the cultures of the Caribbean 
+                      |are astonishingly diverse. Taste Creole flavors, delicious BBQ, and the fresh catch of the day.
+                      | to additional content. This content is a little bit longer.
+
+            .col-12.col-md-4
+              .card.h-100
+                a.card-block.stretched-link.text-decoration-none(href='/packages')
+                img.card-img-top(src='/images/Africa2.jpg' alt='...')
+                .card-body
+                  h5.card-title.colorindexpage Asia
+                  p.card-text.colorindexpage
+                    | The Great Wall, Angkor Wat, Singapore skyscrapers, Mt. Fuji, Balinese dancers…welcome 
+                    |to Asia. A continent so vast and diverse in its regions, cultures, and peoples that it 
+                    |belies any single description.
+                    
+        // Travel Packages
+        // Canada, us, mexico, caribbean, europe, africa
