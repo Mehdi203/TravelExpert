@@ -58,7 +58,7 @@ module.exports.init = function (app) {
   // Login Endpoint, recieves the user login from a login form
   app.post(
     "/login",
-    passport.authenticate("local", { failureRedirect: "/" }),
+    passport.authenticate("local", { failureRedirect: "/users/login" }),
     function (req, res) {
       const headermessage = `Welcome ${req.user?.username}`;
       res.redirect("/?headermessage=" + headermessage);
