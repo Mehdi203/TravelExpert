@@ -13,18 +13,17 @@ block content
             br
             |of getaway options fit for summer fu
            
+
     #mypackage.container
-      h1 Browse by Vacation Destination
+      h1= packageList .PkgName
         .card-group.gap-3
-          each pack in packageList
+          if packageList
             .card.mt-5               
-                img.card-img-top(src=pack.imagpath alt='canada')
+                img.card-img-top(src=packageList .imagpath alt='canada')
                 .card-body
-                  h5.card-title= pack.PkgName
-                  p.card-text
-                    | Price: #{pack.PkgBasePrice}
-
-                  //- a.btn.btn-primary(href='/packages/'+ pack.PackageId)  Details
-
-
+                  //- h1.card-title= packageList .PkgName
+                  h2.card-text= packageList.PkgDesc
+                  h3.card-text
+                    | Price: #{packageList .PkgBasePrice}
+                  a.btn.btn-primary(href='/packages/'+ packageList.PackageId)  Buy 
 
