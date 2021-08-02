@@ -6,7 +6,6 @@ var logger = require('morgan');
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
-var packagesRouter = require('./routes/packages');
 var contactRouter = require('./routes/contact');
 
 const mongoSanitize = require("express-mongo-sanitize");
@@ -72,7 +71,6 @@ require("./my-passport").init(app);
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
-app.use('/packages', packagesRouter);
 app.use('/contact', contactRouter);
 
 

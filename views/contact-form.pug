@@ -34,14 +34,14 @@ block content
                   .col-md-6.p-3
                     .md-form.mb-0
                       label(for='name') Your name
-                      input#name.form-control(type='text' name='name' value=name )
+                      input#name.form-control(type='text' name='name' value=contactdata && contactdata.name required )
                       
                   // Grid column
                   // Grid column
                   .col-md-6.p-3
                     .md-form.mb-0
                       label(for='email') Your email
-                      input#email.form-control(type='text' name='email' value=email)
+                      input#email.form-control(type='email' name='email' value=contactdata && contactdata.email required)
                       
                   // Grid column
                 // Grid row
@@ -50,7 +50,7 @@ block content
                   .col-md-12.p-3
                     .md-form.mb-0
                       label(for='subject') Subject
-                      input#subject.form-control(type='text' name='subject' value=subject)
+                      input#subject.form-control(type='text' name='subject' value=contactdata && contactdata.subject required)
                       
                 // Grid row
                 // Grid row
@@ -59,14 +59,14 @@ block content
                   .col-md-12.p-3
                     .md-form
                       label(for='message') Your message
-                      textarea#message.form-control.md-textarea.usermessage(type='text' name='message' value=message)
+                      textarea#message.form-control.md-textarea.usermessage(type='text' name='message' value=contactdata && contactdata.message required)
                       
                 // Grid row
                 .row
                   .col-md-12.p-3
                     .md-form.mb-0
                       label(for='url') URL
-                      input#url.form-control(type='text' name='contacturl' value=contacturl)
+                      input#url.form-control(type='text' name='contacturl' value=contactdata && contactdata.contacturl required)
 
                 .text-center.text-md-left.mt-2
                 //- button.btn.btn-primary.btn-lg(type='submit') Send
