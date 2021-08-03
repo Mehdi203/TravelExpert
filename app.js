@@ -69,10 +69,10 @@ var uniqueValidator = require('mongoose-unique-validator');
 require("./my-passport").init(app);
 // -------------------------------------------------------------
 
-app.use('/', indexRouter);
+
 app.use('/users', usersRouter);
 app.use('/contact', contactRouter);
-
+app.use('/', indexRouter);
 
 
 // app.use('/products', productsRouter);

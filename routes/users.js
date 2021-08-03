@@ -53,9 +53,10 @@ function processErrors(errs, req, res) {
   const errorKeys = Object.keys(errs.errors);
   errorKeys.forEach((key) => errorArray.push(errs.errors[key].message));
   return res.render("sign-up", {
-    ...pageRegister,
+    registerdata: req.body,
+    // ...pageRegister,
     errors: errorArray,
-    ...req.body,
+    // ...req.body,
   });
 }
 
