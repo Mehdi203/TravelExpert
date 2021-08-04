@@ -1,0 +1,47 @@
+extends layout
+
+block content 
+  hr
+  br
+  br
+  .container  
+        a.btn.btn-success(href='/admin/add') Add a new Agent 
+      
+        table.table.table-striped
+        
+            thead
+              tr
+                th AgentId  
+                th First Name
+                th Last Name 
+                th Business Phone 
+                th Email
+                th Position 
+                th AgencyId
+                th Edit 
+                th Delete
+
+                each agent in agents        
+                    tbody
+                    tr 
+                      td=agent.AgentId
+                      td= agent.AgtFirstName
+                      td= agent.AgtLastName
+                      td= agent.AgtBusPhone
+                      td= agent.AgtEmail
+                      td= agent.AgtPosition
+                      td= agent.AgencyId 
+                      td 
+                        a.btn.btn-warning(href='/admin/edit'+agent._id) Edit
+                      td 
+                        a.btn.btn-danger(href='/admin/delete'+agent._AgentId) delete    
+
+
+
+
+
+
+
+
+                 
+

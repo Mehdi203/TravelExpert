@@ -7,6 +7,7 @@ var logger = require('morgan');
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 var contactRouter = require('./routes/contact');
+var adminRouter = require('./routes/admin');
 
 const mongoSanitize = require("express-mongo-sanitize");
 
@@ -57,6 +58,9 @@ mongoose.connect(process.env.MONGO_URL , {
 const db = mongoose.connection;
 /// To log the Mongoose erros to the console directly
 db.on("error", console.error.bind(console, "connection error:"));
+db.once("open", function () {
+  console.log("Connected to DB");
+});
 
 
 
@@ -69,9 +73,11 @@ var uniqueValidator = require('mongoose-unique-validator');
 require("./my-passport").init(app);
 // -------------------------------------------------------------
 
-app.use('/', indexRouter);
+
 app.use('/users', usersRouter);
 app.use('/contact', contactRouter);
+app.use('/admin',adminRouter);
+app.use('/', indexRouter);
 
 
 
