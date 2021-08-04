@@ -54,14 +54,14 @@ agent.save()
 });    
 
 
-router.post('/delete', function (req, res, next) {
+// router.post('/delete', function (req, res, next) {
 
-agent.deleteOne(_id：req.body.id) 
-    .then(result => {
-        res.redirect('agentlist');
-    })
-    .catch(err => console.log(err));
-});
+// agent.deleteOne(_id：req.body.id) 
+//     .then(result => {
+//         res.redirect('agentlist');
+//     })
+//     .catch(err => console.log(err));
+// });
 
 
 module.exports = router;
