@@ -32,7 +32,7 @@ router.get('/', function (req, res, next) {
 
 
 //show single packages
-router.get('/:id', function(req, res, next) {
+router.get('/package-single/:id', function(req, res, next) {
   const pid = req.params.id;
 
   Package.findOne({PackageId: pid},(err, package) => {
