@@ -44,7 +44,7 @@ Agent.findById(agtid, (err, agt) => {
   });
 });
 
-// Agent.updateOne({ _id: req.body.id }, { $set: { AgentId: req.body.AgentId, AgtFirstName: req.body.AgtFirstName, AgtLastName: req.body.AgtLastName, :req.body.description } })
+// Agent.updateOne({ _id: req.body.id }, { $set: { AgentId: req.body.AgentId, AgtFirstName: req.body.AgtFirstName, AgtLastName:req.body.AgtLastName, AgtBusPhone:req.body.AgtBusPhone，AgtEmail：req.body.AgtEmail,AgtPosition:req.body.AgtPosition, AgencyId:req.body.AgtPosition:} })
 // .then(result => {
 //     res.redirect('/products/' + req.body.id);
 // })

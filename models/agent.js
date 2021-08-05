@@ -4,6 +4,7 @@ const {Schema} = mongoose;
 
  
 const agentSchema = new Schema({
+      // _id:{type: Number , required:true},
       AgentId: { type: Number, required: true},
       AgtFirstName: { type: String, required: true},
       AgtMiddleInitial: { type: String, required: false},

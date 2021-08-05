@@ -21,20 +21,20 @@ block content
                 th Edit 
                 th Delete
 
-                each agent in agents        
+                each agt in agents        
                     tbody
                     tr 
-                      td=agent.AgentId
-                      td= agent.AgtFirstName
-                      td= agent.AgtLastName
-                      td= agent.AgtBusPhone
-                      td= agent.AgtEmail
-                      td= agent.AgtPosition
-                      td= agent.AgencyId 
+                      td= agt.AgentId
+                      td= agt.AgtFirstName
+                      td= agt.AgtLastName
+                      td= agt.AgtBusPhone
+                      td= agt.AgtEmail
+                      td= agt.AgtPosition
+                      td= agt.AgencyId
                       td 
-                        a.btn.btn-warning(href='/admin/edit'+agent._id) Edit
+                        a.btn.btn-warning(href='/admin/edit/'+agt._id) Edit
                       td 
-                        a.btn.btn-danger(href='/admin/delete'+agent._AgentId) delete    
+                        a.btn.btn-danger(href='/admin/delete/'+agt._id) delete    
 
 
 
