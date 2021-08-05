@@ -1,9 +1,11 @@
 var express = require('express');
 var router = express.Router();
+const processErrors = require("./processErrors");
 
 //Get Agent List model 
 const Agent = require('../models/agent').Agent;
 
+// Home Dashboard
 router.get('/', function(req, res, next) { 
     res.render('dashboard')
     });
@@ -11,7 +13,7 @@ router.get('/', function(req, res, next) {
 
 router.get('/agentlist', function (req, res, next) {
     Agent.find({},(err, agents) => {
-        res.render('agentlist',{ 
+        res.render('agent_list',{ 
             title: "Our Agent List", 
             agents:agents});
     });
@@ -20,48 +22,50 @@ router.get('/agentlist', function (req, res, next) {
 
 // Add the new Agent Form 
   router.get('/add', function (req, res, next) {
-    res.render("addagent");      
+    res.render("agent_add");      
 });
 
-// router.post('/add', function (req, res, next) {
-//     const data = req.body;
-//     const agent = new Agent(data);
-//     agent.save(function(err) {
-//         if (err) return handleError(err);
-//         res.redirect('agentlist')
-//     });
-
-// });
-
+// Post the new Agent
 router.post('/add', function (req, res, next) {
-const agent = new Agent({
-        AgentId: req.body.AgentId,
-        AgtFirstName: req.body.AgtFirstName,
-        AgtMiddleInitial: req.body.AgtMiddleInitial,
-        AgtLastName: req.body.AgtLastName,
-        AgtBusPhone: req.body.AgtBusPhone,
-        AgtEmail: req.body.AgtEmail,
-        AgtPosition: req.body.AgtPosition,
-        AgencyId: req.body.AgencyId,
-});
-
-agent.save()
+    const data = req.body;
+    const agt = new Agent(data); 
+agt.save()
     .then(result => {
         res.redirect("agentlist");
     }).catch(err => console.log(err));
+});  
 
+//Get the edit form
+router.get('/edit/:agtid', function (req, res, next) {
+const agtid = req.params.agtid;
+Agent.findById(agtid, (err, agt) => {
+    if (err) console.log(err);
+    res.render("agent_edit", { agt });
+  });
+});
 
-});    
+// Agent.updateOne({ _id: req.body.id }, { $set: { AgentId: req.body.AgentId, AgtFirstName: req.body.AgtFirstName, AgtLastName: req.body.AgtLastName, :req.body.description } })
+// .then(result => {
+//     res.redirect('/products/' + req.body.id);
+// })
+// .catch(err => console.log(err));
 
+// Process the edited product data
+router.post("/edit/:agtid", function (req, res, next) {
+    const agtid = req.params.agtid;
+      Agent.findByIdAndUpdate(agtid, req.body, function (err) {
+        res.redirect('/admin/agentlist');
+    });
+});
 
-// router.post('/delete', function (req, res, next) {
-
-// agent.deleteOne(_id：req.body.id) 
-//     .then(result => {
-//         res.redirect('agentlist');
-//     })
-//     .catch(err => console.log(err));
-// });
+/* Delete a agent, given its Id. */
+router.get("/delete/:agtid", function (req, res, next) {
+    const agtid = req.params.agtid;
+    Agent.findByIdAndDelete(agtid, (err) => {
+      if (err) console.log(err);
+      res.redirect("/admin/agentlist");
+    });
+  });
 
 
 module.exports = router;
