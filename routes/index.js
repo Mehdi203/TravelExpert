@@ -1,6 +1,6 @@
 var express = require('express');
 var router = express.Router();
-// const getPackages = require("../models/packagesMdl").getPackages;
+// const getPackages = require("../models/packagesMdl").getPackages;//
 var {Package} = require("../models/packagesMdl");
 var random_greeting = require('../models/greeting');
 let greeting = ['Hello', 'How are you', 'Hi', 'Greetings', 'Hola'];
