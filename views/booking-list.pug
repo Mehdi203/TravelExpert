@@ -1,0 +1,25 @@
+extends layout.pug
+
+block content
+
+  .grid-container
+    .intro.p-lr
+      h3 Travel Expert Philippines
+      h4 Booking for
+      if bookingPosts
+          each bpost in bookingPosts
+            h4= bpost
+            br
+            //- h4= 'CustID: ' + bpost.CustomerId
+            //- p= 'BookID: ' + bpost.BookingId
+            //- p= 'Book date: ' + bpost.BookingDate
+            //- p= 'Book#: ' + bpost.BookingNo
+            //- p= 'Traveler Count: ' + bpost.TravelerCount 
+            //- p= 'Trip Type ID: ' + bpost.TripTypeId
+
+      p
+        a(href="javascript:history.back()") Back
+          
+    figure
+      img(src='img/ty.jpg' alt='Thank You' style='padding:0px;width:350px;height:270px;')
+    br
