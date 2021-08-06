@@ -1,6 +1,6 @@
 var express = require("express");
 var router = express.Router();
-// const { User } = require("../models/user");
+// const { User } = require("../models/user");//
 const User = require('../models/user').User;
 const bcrypt = require("bcryptjs");
 
@@ -53,9 +53,10 @@ function processErrors(errs, req, res) {
   const errorKeys = Object.keys(errs.errors);
   errorKeys.forEach((key) => errorArray.push(errs.errors[key].message));
   return res.render("sign-up", {
-    ...pageRegister,
+    registerdata: req.body,
+    // ...pageRegister,
     errors: errorArray,
-    ...req.body,
+    // ...req.body,
   });
 }
 

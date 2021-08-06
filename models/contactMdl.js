@@ -1,4 +1,4 @@
-// Require the mongoose module
+// Require the mongoose module//
 var mongoose = require('mongoose');
 
 var uniqueValidator = require('mongoose-unique-validator');

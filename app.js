@@ -7,7 +7,11 @@ var logger = require('morgan');
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 var contactRouter = require('./routes/contact');
+<<<<<<< HEAD
 var bookingRouter = require('./routes/booking');
+=======
+var adminRouter = require('./routes/admin');
+>>>>>>> df27c9062bbb034473dd3f49f651b1521d3781e8
 
 const mongoSanitize = require("express-mongo-sanitize");
 
@@ -58,6 +62,9 @@ mongoose.connect(process.env.MONGO_URL, {
 const db = mongoose.connection;
 /// To log the Mongoose erros to the console directly
 db.on("error", console.error.bind(console, "connection error:"));
+db.once("open", function () {
+  console.log("Connected to DB");
+});
 
 
 
@@ -70,14 +77,18 @@ var uniqueValidator = require('mongoose-unique-validator');
 require("./my-passport").init(app);
 // -------------------------------------------------------------
 
-app.use('/', indexRouter);
+
 app.use('/users', usersRouter);
 app.use('/contact', contactRouter);
+<<<<<<< HEAD
 app.use('/booking', bookingRouter);
+=======
+app.use('/', indexRouter);
+app.use('/admin',adminRouter);
+>>>>>>> df27c9062bbb034473dd3f49f651b1521d3781e8
 
 
-
-// app.use('/products', productsRouter);
+// app.use('/products', productsRouter);//
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

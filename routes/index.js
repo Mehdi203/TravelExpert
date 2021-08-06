@@ -1,7 +1,12 @@
 var express = require('express');
 var router = express.Router();
+<<<<<<< HEAD
 // const getPackages = require("../models/packagesMdl").getPackages;
 var { Package } = require("../models/packagesMdl");
+=======
+// const getPackages = require("../models/packagesMdl").getPackages;//
+var {Package} = require("../models/packagesMdl");
+>>>>>>> df27c9062bbb034473dd3f49f651b1521d3781e8
 var random_greeting = require('../models/greeting');
 let greeting = ['Hello', 'How are you', 'Hi', 'Greetings', 'Hola'];
 
@@ -16,11 +21,14 @@ router.get('/thankyou', function(req, res, next) {
 });
 
 
+<<<<<<< HEAD
 
 router.get('/contact', function(req, res, next) {
     res.render('contact-form');
 });
 
+=======
+>>>>>>> df27c9062bbb034473dd3f49f651b1521d3781e8
 router.get('/packages', function(req, res, next) {
     res.render('packages');
 });
@@ -37,6 +45,7 @@ router.get('/', function(req, res, next) {
 
 
 //show single packages
+<<<<<<< HEAD
 router.get('/:id', function(req, res, next) {
     const pid = req.params.id;
 
@@ -47,6 +56,17 @@ router.get('/:id', function(req, res, next) {
 
         });
         // console.log(packages)
+=======
+router.get('/package-single/:id', function(req, res, next) {
+  const pid = req.params.id;
+
+  Package.findOne({PackageId: pid},(err, package) => {
+    
+    res.render('package-single',
+    {
+      packageList:package
+       
+>>>>>>> df27c9062bbb034473dd3f49f651b1521d3781e8
     });
 
 });

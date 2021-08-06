@@ -30,27 +30,27 @@ block content
                           .d-flex.flex-row.align-items-center.mb-4
                             i.fas.fa-user.fa-lg.me-3.fa-fw
                             .form-outline.flex-fill.mb-0
-                              input#form3Example1c.form-control(type='text' name='fname' value=firstname required)
+                              input#form3Example1c.form-control(type='text' name='fname' value=registerdata && registerdata.fname required)
                               label.form-label(for='form3Example1c') Your First Name
                           .d-flex.flex-row.align-items-center.mb-4
                             i.fas.fa-user.fa-lg.me-3.fa-fw
                             .form-outline.flex-fill.mb-0
-                              input#form3Example1c.form-control(type='text' name='lname' value = lastname required)
+                              input#form3Example1c.form-control(type='text' name='lname' value = registerdata && registerdata.lname required)
                               label.form-label(for='form3Example1c') Your Last Name
                           .d-flex.flex-row.align-items-center.mb-4
                             i.fas.fa-envelope.fa-lg.me-3.fa-fw
                             .form-outline.flex-fill.mb-0
-                              input#form3Example3c.form-control(type='email' name='email'  value= email required)
+                              input#form3Example3c.form-control(type='email' name='email'  value= registerdata && registerdata.email required)
                               label.form-label(for='form3Example3c') Your Email
                           .d-flex.flex-row.align-items-center.mb-4
                             i.fas.fa-envelope.fa-lg.me-3.fa-fw
                             .form-outline.flex-fill.mb-0
-                              input#form3Example3c.form-control(type='text' name='username'  value= username required)
+                              input#form3Example3c.form-control(type='text' name='username'  value= registerdata && registerdata.username required)
                               label.form-label(for='form3Example3c') Username
                           .d-flex.flex-row.align-items-center.mb-4
                             i.fas.fa-lock.fa-lg.me-3.fa-fw
                             .form-outline.flex-fill.mb-0
-                              input#form3Example4c.form-control(type='password' name='password' value= password required)
+                              input#form3Example4c.form-control(type='password' name='password' value= registerdata && registerdata.password required)
                               label.form-label(for='form3Example4c') Password
 
                           
@@ -65,3 +65,4 @@ block content
                         img.img-fluid(src='/images/register.jpg' alt='Sample image')
 
 
+//- //latest version- August 08

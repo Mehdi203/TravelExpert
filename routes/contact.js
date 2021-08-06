@@ -6,7 +6,7 @@ const Contact = require('../models/contactMdl').Contact;
 /* GET users listing. */
 // router.get('/', function(req, res, next) {
 //   res.send('respond with a resource');
-// });
+// });//
 
 //show all contacts
 router.get('/display-contact', function (req, res, next) {

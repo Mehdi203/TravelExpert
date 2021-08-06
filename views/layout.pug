@@ -31,21 +31,33 @@ html
               a.nav-link(href='/gallery') Gallery
             //- li.nav-item
             //-   a.nav-link(href='/packages') Packages
+    
+            li.nav-item
+              a.nav-link(href='/contact') Contact us
+
             li.nav-item.dropdown
              a#navbarDropdown.nav-link.dropdown-toggle(href='#' role='button' data-bs-toggle='dropdown' aria-expanded='false') Registration/Log-in
              ul.dropdown-menu(aria-labelledby='navbarDropdown')
                li
                  a.dropdown-item(href='/users/login') Log-in
                li
-                 a.dropdown-item(href='/users/sign-up') Sign-up           
-            li.nav-item
-              a.nav-link(href='/contact') Contact us
+                 a.dropdown-item(href='/users/sign-up') Sign-up
+            
+            li.nav-item.dropdown
+             a#navbarDropdown.nav-link.dropdown-toggle(href='#' role='button' data-bs-toggle='dropdown' aria-expanded='false') Admin Page
+             ul.dropdown-menu(aria-labelledby='navbarDropdown')
+              li
+                 a.dropdown-item(href='/admin/') Dashboard 
+              li
+                 a.dropdown-item(href='/admin/agentlist') Agent List
+               
+
             form#mysearch.d-flex
               input.form-control.me-2(type='search' placeholder='Search' aria-label='Search')
               button#sub_button.btn.btn-outline-success(type='submit') Search
               
     
-      //- li.nav-item
+      //- li.nav-item//
       if currentUser
         span.mt-2.text-white| Welcome Back #{currentUser.username}           
         //- a(href="/log-out") Log Out
@@ -53,6 +65,7 @@ html
       else
         //- a(href="/users/login") Please Login
         a.btn.btn-primary.me-2(href='/users/login' role='button') Please Login
+        
             
     // End of Navbar
   

@@ -1,0 +1,46 @@
+extends layout
+
+block content 
+    br
+    br
+    .container  
+        h1 Edit Existing Agent
+
+        form.row.g-6(action="/admin/edit" method = 'POST')
+            .col-md-12
+                label.form-label(for='inputagentid') Agent Id
+                input#inputagentid.form-control(type='number' name='AgentId' required value=agt && agt.AgentId)
+            .col-md-12
+                label.form-label(for='inputfirstname') First Name
+                input#inputfirstname.form-control(type='text' name='AgtFirstName' required value=agt && agt.AgtFirstName)
+            .col-md-12
+                label.form-label(for='inputmiddlename') Middle Initial 
+                input#inputmiddlename.form-control(type='text' name='AgtMiddleInitial' value=agt && agt.AgtMiddleInitial) 
+            .col-md-12
+                label.form-label(for='inputlastname') Last Name
+                input#inputlastname.form-control(type='text' name='AgtLastName' value=agt && agt.AgtLastName)
+            .col-md-12
+                label.form-label(for='inputbusinessphonenumber') Business Phone
+                input#inputbusinessphonenumber.form-control(type='text' name='AgtBusPhone' value=agt && agt.AgtBusPhone)
+            .col-md-12
+                label.form-label(for='inputemail') Email
+                input#inputbusinessphonenumber.form-control(type='text' name='AgtEmail' value=agt && agt.AgtEmail)
+            .col-md-12
+                label.form-label(for='inputposition') Agent Position
+                input#inputposition.form-control(type='text' name='AgtPosition' value=agt && agt.AgtPosition)
+            .col-md-12
+                label.form-label(for='inputagencyid') AgencyId 
+                input#inputagencyid.form-control(type='number' name='AgencyId' value=agt && agt.AgencyId) 
+                br
+            hr
+            .col-md-12.text-center 
+                button.btn.btn-primary.btn-lg(type='submit') Update
+            br 
+            br
+            br
+
+            .col-md-12.text-center  
+                button.btn.btn-primary.btn-lg(href='/admin/agentlist' ) Cancel                     
+
+
+            

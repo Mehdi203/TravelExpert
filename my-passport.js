@@ -55,7 +55,7 @@ module.exports.init = function (app) {
   // Initialize Passport
   app.use(passport.initialize());
   app.use(passport.session());
-  // Login Endpoint, recieves the user login from a login form
+  // Login Endpoint, recieves the user login from a login form//
   app.post(
     "/login",
     passport.authenticate("local", { failureRedirect: "/users/login" }),
