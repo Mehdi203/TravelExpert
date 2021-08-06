@@ -19,11 +19,11 @@ block content
           p.text-center
             h2 #{greet}
         
-    #mypackage.container
+    #mypackage.container.col-12
       h1 Browse by Vacation Destination
         .card-group.gap-3
           each pack in packageList
-            .card.mt-5               
+            .card.mt-5             
                 img.card-img-top(src=pack.imagpath alt='canada')
                 .card-body
                   h5.card-title= pack.PkgName
