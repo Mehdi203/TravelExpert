@@ -1,0 +1,40 @@
+extends layout
+
+block content
+
+block content
+
+  h1= title
+
+  h3 Edit product
+
+  form.row.g-3(method='POST' action="")
+    .col-md-6
+      label.form-label(for='inputBookingDate') Date:
+      input#inputBookingDate.form-control(type='string' name='BookingDate' disabled value=bookings && BookDate)
+    .col-md-6
+      label.form-label(for='inputBookingNo') Booking Reference:
+      input#inputBookingNo.form-control(type='text' name='BookingNo' disabled value=bookings && bookings.BookingNo)
+    //- .col-12
+    //-   label.form-label(for='inputdescription') Description
+    //-   textarea#inputdescription.form-control(rows="3" name='description')
+    //-     | #{bookings && bookings.description}
+    .col-md-6
+      label.form-label(for='inputTravelerCount') Number of Travellers:
+      input#inputTravelerCount.form-control(type='number' name='TravelerCount' value=bookings && bookings.TravelerCount)    
+    .col-md-6
+      button.btn.btn-primary.col-12.mt-4(type='submit') Update
+
+      a.btn.btn-primary.col-12.mt-4(href='/booking/' + (bookings && bookings.BookingId)) Cancel
+
+      // Another way for doing the cancel button
+        if add
+          a.btn.btn-primary.col-12.mt-4(href= '/' ) Cancel
+        else 
+          a.btn.btn-primary.col-12.mt-4(href='/product/details/'+prod._id) Cancel
+
+  .container
+      if errors    
+        each error in errors
+            p.alert.alert-danger= error
+

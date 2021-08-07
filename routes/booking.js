@@ -16,12 +16,14 @@ router.get('/', function(req, res, next) {
 // });
 
 /* GET all posts listing. */
-router.get('/all', function(req, res, next) {
-    console.log('booking/all');
-    Booking.find((err, bookings) => {
-        res.render('booking-list', { bookingPosts: bookings });
+router.get('/all', function (req, res, next) {
+
+    Booking.find({}, (err, bookings) => {
+    if (err) throw err;
+    res.render('booking-list', { title: "My Bookings", bookings });
     });
-});
+    });
+
 
 // To create a new booking
 router.post('/', function(req, res, next) {
@@ -106,13 +108,61 @@ router.post('/', function(req, res, next) {
 
 });
 
-// Shows a single post
-router.get('/:custid', function(req, res, next) {
-    const cid = Number(req.params.custid);
-    Booking.find({ CustomerId: cid }, (err, bookings) => {
-        console.log(cid);
-        res.render('booking-list', { bookingPosts: bookings });
+
+
+//show a single booking by BOOKID 
+router.get('/:bookid', function(req, res, next) {
+    const bid = req.params.bookid;
+  
+    Booking.findOne({BookingId: bid}, (err, bookings) => {
+        const BookDate = bookings.BookingDate.toDateString();
+        var inFuture = bookings.BookingDate > new Date();
+
+        res.render('booking-details', { title: "My Bookings", bookings, BookDate, inFuture });
+
     });
 });
+
+
+// /* GET Booking Edit form with given booking Id  */
+router.get('/edit/:bookid', function(req, res, next) {
+    const bid = req.params.bookid;
+
+    Booking.findOne({BookingId: bid}, (err, bookings) => {
+        const BookDate = bookings.BookingDate.toDateString();
+        res.render('booking-edit', { title: "My Bookings", bookings, BookDate });
+
+    });
+});
+
+
+// Process the edited booking data
+router.post("/edit/:bookid", function (req, res, next) {
+    const bookid = req.params.bookid;
+    new Booking(req.body).validate((err) => {
+      // To validate the data before updating
+      if (err)
+        return processErrors(err, "booking-details", req, res, {
+          bookings: { ...req.body, _id: bookid },
+        });
+        Booking.findByIdAndUpdate(bookid, req.body, function (err) {
+        if (err)
+          return processErrors(err, "booking-details", req, res);
+        res.redirect("/booking/" + bookid);
+      });
+    });
+});
+
+function processErrors(errs, pageTemplate, req, res, data) {
+    // If there are errors from the Model schema
+    const errorArray = [];
+    const errorKeys = Object.keys(errs.errors);
+    errorKeys.forEach((key) => errorArray.push(errs.errors[key].message));
+    return res.render(pageTemplate, {
+      errors: errorArray,
+      ...req.body,
+      ...data,
+    });
+  }
 
 module.exports = router;

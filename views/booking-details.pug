@@ -1,0 +1,34 @@
+extends layout
+
+block content
+
+block content
+
+        // Marketing section
+        .banner
+          .card.bg-dark.text-white
+            img#mybanner.card-img(src='/images/marketing.jpg' alt='marketing')
+            .card-img-overlay
+              h5.card-title The Best Travel Website!
+              p.card-text
+                | Lorem, ipsum dolor sit amet consectetur adipisicing elit. 
+                br 
+                |  Voluptas voluptatum,
+                |                     ad
+                |                     odit pa dolorem veniam assumenda atque.    
+
+        
+        .container
+          if bookings
+                  h3= "Booking Date: " + BookDate
+                  h4= "Passengers Travelling: " + bookings.TravelerCount
+                  h5= "Booking Reference Number: " + bookings.BookingNo 
+                  p= "Customer ID: " + bookings.CustomerId
+  
+  
+          a(href="/booking/all") Back
+          if inFuture
+            a.btn.btn-primary.col-12(href='/booking/edit/' + bookings.BookingId ) EDIT
+          if Active  
+            a.btn.btn-primary.col-12(href='/booking/edit/' + bookings.BookingId ) CANCEL
+
