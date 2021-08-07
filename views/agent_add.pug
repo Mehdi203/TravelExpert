@@ -1,3 +1,5 @@
+//- Written by George(Xiaoyin Zhou)
+
 extends layout
 
 block content 
@@ -9,28 +11,36 @@ block content
         form.row.g-6(action="/admin/add" method = 'POST')
             .col-md-6
                 label.form-label(for='inputagentid') Agent Id
-                input#inputagentid.form-control(type='number' name='AgentId')
+                input#inputagentid.form-control(type='number' name='AgentId' placeholder= 'Unqiue Number')
             .col-md-6
                 label.form-label(for='inputfirstname') First Name
-                input#inputfirstname.form-control(type='text' name='AgtFirstName')
+                input#inputfirstname.form-control(type='text' name='AgtFirstName' placeholder= 'Required')
             .col-md-6
                 label.form-label(for='inputmiddlename') Middle Initial 
-                input#inputmiddlename.form-control(type='text' name='AgtMiddleInitial') 
+                input#inputmiddlename.form-control(type='text' name='AgtMiddleInitial' placeholder= 'Optional') 
             .col-md-6
                 label.form-label(for='inputlastname') Last Name
-                input#inputlastname.form-control(type='text' name='AgtLastName')
+                input#inputlastname.form-control(type='text' name='AgtLastName' placeholder= 'Required')
             .col-md-6
                 label.form-label(for='inputbusinessphonenumber') Business Phone
-                input#inputbusinessphonenumber.form-control(type='text' name='AgtBusPhone')
+                input#inputbusinessphonenumber.form-control(type='text' name='AgtBusPhone' placeholder= 'Required')
             .col-md-6
                 label.form-label(for='inputemail') Email
                 input#inputbusinessphonenumber.form-control(type='text' name='AgtEmail' placeholder='helloword@email.com')
             .col-md-6
                 label.form-label(for='inputposition') Agent Position
-                input#inputposition.form-control(type='text' name='AgtPosition' placeholder='Senior/Intermediate/Junior')
+                select#inputposition.form-control(name="AgtPosition" type = 'text')
+                        option(value='Senior') Senior Agent
+                        option(value='Intermediate') Intermediate Agent
+                        option(value='Junior') Junior Agent 
+
+                //- input#inputposition.form-control(type='text' name='AgtPosition' placeholder='Senior/Intermediate/Junior')
             .col-md-6
                 label.form-label(for='inputagencyid') AgencyId 
-                input#inputagencyid.form-control(type='number' name='AgencyId' placeholder='1 or 2') 
+                select#inputposition.form-control(name="AgencyId" type = 'number')
+                        option(value='1') 1: Calgary
+                        option(value='2') 2: Okatokes 
+                
                 br
 
 

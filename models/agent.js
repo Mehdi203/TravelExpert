@@ -1,3 +1,5 @@
+//Written by George(Xiaoyin Zhou)
+
 // Require the mongoose module
 const mongoose = require('mongoose');
 const {Schema} = mongoose;

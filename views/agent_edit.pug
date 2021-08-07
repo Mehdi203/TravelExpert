@@ -1,3 +1,5 @@
+//- Written by George(Xiaoyin Zhou)
+
 extends layout
 
 block content 
@@ -6,7 +8,7 @@ block content
     .container  
         h1 Edit Existing Agent
 
-        form.row.g-6(action="/admin/edit" method = 'POST')
+        form.row.g-6(action="" method = 'POST')
             .col-md-12
                 label.form-label(for='inputagentid') Agent Id
                 input#inputagentid.form-control(type='number' name='AgentId' required value=agt && agt.AgentId)
@@ -40,7 +42,8 @@ block content
             br
 
             .col-md-12.text-center  
-                button.btn.btn-primary.btn-lg(href='/admin/agentlist' ) Cancel                     
+                button.btn.btn-primary.btn-lg(href='/' ) Cancel                     
 
 
             
+

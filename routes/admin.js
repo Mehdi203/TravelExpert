@@ -1,9 +1,17 @@
+//Written by George(Xiaoyin Zhou)
+
 var express = require('express');
 var router = express.Router();
+// var auth = require('../models/auth.js');
+// var isAdmin = auth.isAdmin;
+
+
+
 const processErrors = require("./processErrors");
 
 //Get Agent List model 
 const Agent = require('../models/agent').Agent;
+
 
 // Home Dashboard
 router.get('/', function(req, res, next) { 
@@ -35,28 +43,28 @@ agt.save()
     }).catch(err => console.log(err));
 });  
 
-//Get the edit form
-router.get('/edit/:agtid', function (req, res, next) {
-const agtid = req.params.agtid;
-Agent.findById(agtid, (err, agt) => {
+//Get the edit agent
+router.get('/edit/:id', function (req, res, next) {
+const id = req.params.id;
+
+Agent.findById(id, (err, agt) => {
     if (err) console.log(err);
     res.render("agent_edit", { agt });
   });
 });
 
-// Agent.updateOne({ _id: req.body.id }, { $set: { AgentId: req.body.AgentId, AgtFirstName: req.body.AgtFirstName, AgtLastName:req.body.AgtLastName, AgtBusPhone:req.body.AgtBusPhone，AgtEmail：req.body.AgtEmail,AgtPosition:req.body.AgtPosition, AgencyId:req.body.AgtPosition:} })
-// .then(result => {
-//     res.redirect('/products/' + req.body.id);
-// })
-// .catch(err => console.log(err));
+router.post('/edit/:id', function (req, res, next) {
+const conditions = {_id:req.params.id};
 
-// Process the edited product data
-router.post("/edit/:agtid", function (req, res, next) {
-    const agtid = req.params.agtid;
-      Agent.findByIdAndUpdate(agtid, req.body, function (err) {
-        res.redirect('/admin/agentlist');
-    });
+Agent.update(conditions, req.body)
+   .then(result => {
+      res.redirect("/admin/agentlist");
+      console.log(result)
+  })
+    .catch(err => console.log(err));
+
 });
+
 
 /* Delete a agent, given its Id. */
 router.get("/delete/:agtid", function (req, res, next) {
