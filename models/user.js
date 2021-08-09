@@ -70,6 +70,7 @@ var uniqueValidator = require('mongoose-unique-validator');
       type: String,
       trim: true,
       default: "customer",
+      // enum: ['admin', 'user']
     },
   });
   

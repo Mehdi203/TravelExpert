@@ -2,8 +2,8 @@
 
 var express = require('express');
 var router = express.Router();
-// var auth = require('../models/auth.js');
-// var isAdmin = auth.isAdmin;
+var auth = require('../models/auth.js');
+var isAdmin = auth.isAdmin;
 
 
 
@@ -14,12 +14,12 @@ const Agent = require('../models/agent').Agent;
 
 
 // Home Dashboard
-router.get('/', function(req, res, next) { 
+router.get('/', isAdmin, function(req, res, next) { 
     res.render('dashboard')
     });
   
 
-router.get('/agentlist', function (req, res, next) {
+router.get('/agentlist', isAdmin, function (req, res, next) {
     Agent.find({},(err, agents) => {
         res.render('agent_list',{ 
             title: "Our Agent List", 
