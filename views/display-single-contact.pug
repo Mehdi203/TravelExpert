@@ -1,23 +1,16 @@
+//- //Written by Mohammadmehdi Noroozi(Mehdi)
+
 extends layout
 
 block content
-
-block content
-        
-        // Marketing section
-        .banner
-          .card.bg-dark.text-white
-            img#mybanner.card-img(src='/images/marketing.jpg' alt='marketing')
-            .card-img-overlay
-              h5.card-title The Best Travel Website!
-              p.card-text
-                | Lorem, ipsum dolor sit amet consectetur adipisicing elit. 
-                br 
-                |  Voluptas voluptatum,
-                |                     ad
-                |                     odit pa dolorem veniam assumenda atque.    
-
-        
+        br
+        br
+        br
+        br
+        br
+        br
+        br
+                
         .container
           if contactForm    
                   h3= contactForm.name
@@ -28,5 +21,38 @@ block content
   
   
           a(href="/contact/display-contact") Back
+
+//- extends layout
+
+//- block content
+
+//- block content
+//-   title contact
+
+        
+//-         // Marketing section
+//-         .banner
+//-           .card.bg-dark.text-white
+//-             img#mybanner.card-img(src='/images/marketing.jpg' alt='marketing')
+//-             .card-img-overlay
+//-               h5.card-title The Best Travel Website!
+//-               p.card-text
+//-                 | Lorem, ipsum dolor sit amet consectetur adipisicing elit. 
+//-                 br 
+//-                 |  Voluptas voluptatum,
+//-                 |                     ad
+//-                 |                     odit pa dolorem veniam assumenda atque.    
+
+        
+//-         .container
+//-           if contactForm    
+//-                   h3= contactForm.name
+//-                   h4= contactForm.email
+//-                   h5= contactForm.subject 
+//-                   p= contactForm.message
+//-                   //- p= contact.contacturl//
+  
+  
+//-           a(href="/contact/display-contact") Back
 
 

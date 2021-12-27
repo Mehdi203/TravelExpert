@@ -3,23 +3,27 @@
 var express = require('express');
 var router = express.Router();
 var auth = require('../models/auth.js');
-var isAdmin = auth.isAdmin;
-
-
-
-const processErrors = require("./processErrors");
+var isAgent = auth.isAgent;
+var isMgmt = auth.isMgmt;
 
 //Get Agent List model 
 const Agent = require('../models/agent').Agent;
 
 
-// Home Dashboard
-router.get('/', isAdmin, function(req, res, next) { 
-    res.render('dashboard')
+// Dashboard for Mgmt 
+router.get('/mgmtview', isMgmt, function(req, res, next) { 
+    res.render('mgmt_view')
     });
+
+
+
+// Dashboard for Agent
+router.get('/agentview', isAgent, function(req, res, next) { 
+  res.render('agent_view')
+  });
   
 
-router.get('/agentlist', isAdmin, function (req, res, next) {
+router.get('/agentlist', isAgent, function (req, res, next) {
     Agent.find({},(err, agents) => {
         res.render('agent_list',{ 
             title: "Our Agent List", 

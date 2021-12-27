@@ -1,52 +1,26 @@
+// Written by Raulito Laconsay
+
 extends layout
 
 block content
-    // Marketing section
-    .banner
-      .card.bg-dark.text-white
-        img#mybanner.card-img(src='/images/marketing.jpg' alt='marketing')
-        .card-img-overlay
-         
-          h5.card-title City breaks to suit every style!
-          p.card-text
-            | Make the most of your vacation time with our selection  
-            br
-            |of getaway options fit for summer fu
-           
 
-    #mypackage.container
-      h1= packageList .PkgName
+
+
+    #mypackagebuy.container.col-12
+      h3= packageList .PkgName
         .card-group.gap-3
           if packageList
             .card.mt-5
               
-                img.card-img-top.mx-auto(src=packageList .imagpath alt='canada' style='max-width:150px;')
+                img.card-img-top.mx-auto(src=packageList .imagpath alt='canada' style='max-width:300px;')
                 .card-body
                   //- h1.card-title= packageList .PkgName
                   h4.card-text= packageList.PkgDesc
                   h5.card-text
                     | Price: #{packageList .PkgBasePrice}
-                  //-   p
-                  //-   | Cust ID: 
-                  //-   input(type='number' name='custid' min='100' max='999' required)
-                  //-   //- p
-                  //-   //- | Email: 
-                  //-   //- input(type='email' name='email' required pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$")
-                  //-   p
-                  //-   | Trip Start Date : 
-                  //-   input(type='date' name='startdate' required )
-                  //-   i.fas.fa-calendar.input-prefix(tabindex='0')
-                  //-   p
-                  //-   | Trip End Date : 
-                  //-   input(type='date' name='enddate' required )
-                  //-   i.fas.fa-calendar.input-prefix(tabindex='0')
-                  //-   p
-                  //-   | No. of Travelers: 
-                  //-   input(type='number' min='1' max='999' name='numTraveler' value='1')
-                  //- a.btn.btn-primary(href='/booking/add/' + packageList.PackageId)  Checkout 
-                  //- a.btn.btn-primary(href='/booking/add'+ packageList.PackageId type='submit')  Checkout 
 
-    form.row.g-3(method='POST' action="/booking")
+    // Buy Package form
+    form.row.g-3(method='POST' action="/checkout")
       .col-md-6(hidden=true)
         label.form-label(for='inputpid') PackageID
         input#inputpid.form-control(type='number' name='packid' value= packageList.PackageId required)
@@ -57,19 +31,19 @@ block content
         label.form-label(for='inputclass') Class
         input#inputclass.form-control(type='string' name='class' value='ECN')
       .col-md-6.p-3
-        label.form-label(for='inputcid') CustID
-        input#inputcid.form-control(type='number' name='custid' min='100' max='999' required)
-      .col-md-6.p-3
-        label.form-label(for='inputnumtrav') No. of Travelers
-        input#inputnumtrav.form-control(type='number' name='numTraveler' min='1' max='999' value='1' required)
-      .col-md-6.p-3
         label.form-label(for='inputstartdt') Trip Start Date
-        input#inputstartdt.form-control(type='date' name='startdate' required)
+        input#inputstartdt.form-control(type='date' name='startdate' required min=curdt onchange='var input = document.getElementById("inputenddt");input.setAttribute("min", this.value);input.setAttribute("value", this.value);')
         i.fas.fa-calendar.input-prefix(tabindex='0')
       .col-md-6.p-3
         label.form-label(for='inputenddt') Trip End Date
-        input#inputenddt.form-control(type='date' name='enddate' required)
+        input#inputenddt.form-control(type='date' name='enddate' required min=curdt)
         i.fas.fa-calendar.input-prefix(tabindex='0')
+      .col-md-6.p-3(hidden=true)
+        label.form-label(for='inputcid') CustID
+        input#inputcid.form-control(type='number' name='custid' min='100' max='999' required value=cid)
+      .col-md-6.p-3
+        label.form-label(for='inputnumtrav') No. of Travelers
+        input#inputnumtrav.form-control(type='number' name='numTraveler' min='1' max='999' value='1' required)
       .col-md-6(hidden=true)
         label.form-label(for='inputtriptype') Trip Type
         input#inputtriptype.form-control(type='string' name='triptype' value='L' required)
@@ -82,7 +56,7 @@ block content
       .col-md-6(hidden=true)
         label.form-label(for='inputcomm') Agency Commission
         input#inputcomm.form-control(type='number' name='comm' value=packageList.PkgAgencyCommission required)
-      .col-md-6.p-3
+      .col-md-12.p-3
         button.btn.btn-primary(type='submit') Checkout
                     
                       

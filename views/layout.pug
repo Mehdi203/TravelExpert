@@ -8,54 +8,69 @@ html
     link(href='https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css' rel='stylesheet' integrity='sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC' crossorigin='anonymous')
     // Customize styling
     link(rel='stylesheet' href='/stylesheets/style.css')
+    link(rel='apple-touch-icon' sizes='180x180' href='/images/icon/apple-touch-icon.png')
+    link(rel='icon' type='image/png' sizes='32x32' href='/images/icon/favicon-32x32.png')
+    link(rel='icon' type='image/png' sizes='16x16' href='/images/icon/favicon-16x16.png')
     // Bootstrap JavaScript
     script(src='https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js' integrity='sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM' crossorigin='anonymous')
-    title Home Page
-
+  
 
   body
 
     // Navbar
     nav.navbar.navbar-expand-lg.navbar-dark.fixed-top.navbar-custom
-      .container
-        a.navbar-brand(href='/') Travel Expert
+      #mynav.container
+        a.navbar-brand(href='/') 
+          img.img-responsive(src='/images/logo.png' alt='Travel Expert')
         // toggle for mobile devices
         button.navbar-toggler(type='button' data-bs-toggle='collapse' data-bs-target='#mymenue')
           span.navbar-toggler-icon
-        #mymenue.collapse.navbar-collapse
-          ul.navbar-nav.ms-auto
-
+        collapse.navbar-collapse
+          ul.navbar-nav.justify-content-left
             li.nav-item
               a.nav-link(href='/') Home
             li.nav-item
               a.nav-link(href='/gallery') Gallery
-            //- li.nav-item
-            //-   a.nav-link(href='/packages') Packages
-    
             li.nav-item
               a.nav-link(href='/contact') Contact us
+            li.nav-item
+              a.nav-link(href='/location/only') Locations          
 
-            li.nav-item.dropdown
-             a#navbarDropdown.nav-link.dropdown-toggle(href='#' role='button' data-bs-toggle='dropdown' aria-expanded='false') Registration/Log-in
-             ul.dropdown-menu(aria-labelledby='navbarDropdown')
-               li
-                 a.dropdown-item(href='/users/login') Log-in
-               li
-                 a.dropdown-item(href='/users/sign-up') Sign-up
-            
-            li.nav-item.dropdown
-             a#navbarDropdown.nav-link.dropdown-toggle(href='#' role='button' data-bs-toggle='dropdown' aria-expanded='false') Admin Page
-             ul.dropdown-menu(aria-labelledby='navbarDropdown')
-              li
-                 a.dropdown-item(href='/admin/') Dashboard 
-              li
-                 a.dropdown-item(href='/admin/agentlist') Agent List
-               
+            if currentUser
+              li.nav-item
+                a.nav-link(href='/booking/all/' + currentUser.CustomerId) My Bookings
 
-            form#mysearch.d-flex
-              input.form-control.me-2(type='search' placeholder='Search' aria-label='Search')
-              button#sub_button.btn.btn-outline-success(type='submit') Search
+
+            if !currentUser
+              li.nav-item
+                a.nav-link(href='/users/sign-up') Sign-up
+
+  
+            if currentUser && currentUser.role == "mgmt"     
+                li.nav-item.dropdown
+                  a#navbarDropdown.nav-link.dropdown-toggle(href='#' role='button' data-bs-toggle='dropdown' aria-expanded='false') Admin/Mgmt
+                  ul.dropdown-menu(aria-labelledby='navbarDropdown')
+                      li
+                        a.dropdown-item(href='/admin/mgmtview') Dashboard (Mongo Chart )
+                      li
+                        a.dropdown-item(href='/datamanagers') Dashboard (Dash)
+                                               
+                      li
+                        a.dropdown-item(href='/location/')  Edit Location
+                      li
+                        a.dropdown-item(href='/contact/display-contact')  Contact List
+                                         
               
+            if currentUser && currentUser.role == "agent"     
+                li.nav-item.dropdown
+                    a#navbarDropdown.nav-link.dropdown-toggle(href='#' role='button' data-bs-toggle='dropdown' aria-expanded='false') Admin/Agent
+                    ul.dropdown-menu(aria-labelledby='navbarDropdown')
+                      li
+                          a.dropdown-item(href='/dataagents') Dashboard (Dash)                
+                      li
+                          a.dropdown-item(href='/admin/agentlist') Edit List 
+                 
+               
     
       //- li.nav-item//
       if currentUser
@@ -68,6 +83,9 @@ html
         
             
     // End of Navbar
+ 
+    
+
   
     
     block content
@@ -79,7 +97,7 @@ html
       // Section: Social media
       section.d-flex.justify-content-center.justify-content-lg-between.p-4.border-bottom
 
-      
+
         .container.text-center.text-md-start.mt-5
           // Grid row
           .row.mt-3
@@ -90,8 +108,8 @@ html
                 i.fas.fa-gem.me-3
                 | TravelExpert
               p
-                | Everyone needs an occasional escape. Uncover a world of vacations with 
-                | TraveExpert's packages and trip ideas.
+                | Everyone needs an occasional escape! Uncover a world of adventure with 
+                | TraveExpert's packages and trips!
             // Grid column
             // Grid column
             .col-md-2.col-lg-2.col-xl-2.mx-auto.mb-4
@@ -99,13 +117,13 @@ html
               h6.text-uppercase.fw-bold.mb-4
                 | Packages
               p
-                a.text-reset(href='/packages') Caribbean New Year
+                a.text-reset(href='/package-single/1') Caribbean New Year
               p
-                a.text-reset(href='/packages') Polynesian Paradise
+                a.text-reset(href='/package-single/2') Polynesian Paradise
               p
-                a.text-reset(href='/packages') Asian Expedition
+                a.text-reset(href='/package-single/3') Asian Expedition
               p
-                a.text-reset(href='/packages') European Vacation
+                a.text-reset(href='/package-single/4') European Vacation
             // Grid column
             // Grid column
             .col-md-3.col-lg-2.col-xl-2.mx-auto.mb-4
@@ -113,12 +131,13 @@ html
               h6.text-uppercase.fw-bold.mb-4
                 | links
               p
-                a.text-reset(href='/packages') Pricing
+                a.text-reset(href='/') Pricing
  
               p
-                a.text-reset(href='/packages') Orders
+                a.text-reset(href='/') Orders
+
               p
-                a.text-reset(href='#!') Help
+                a.text-reset(href='/cancellation') Cancellation Policy                
             // Grid column
 
             // Grid column
@@ -134,15 +153,17 @@ html
                   a.text-reset(href='info@travelexpert.com') info@travelexpert.com
               p
                 
-                | +1 403 271 9872
+                | +1 403 271 9872 
+              
 
             // Grid column
           // Grid row
       // Section: Links
       // Copyright
       .text-center.p-4(style='background-color: rgba(0, 0, 0, 0.05);')
-        | &copy; 2021 Copyright: 
-        a.text-reset.fw-bold(href='/') travelexpert.com
+        | Copyright &copy; 2021 Travel Experts Agency Inc. All Rights Reserved.
+        
+        //- a.text-reset.fw-bold(href='/') travelexpert.com
       // Copyright
     // Footer
 

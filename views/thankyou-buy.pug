@@ -1,0 +1,27 @@
+//- // Written by Raulito Laconsay
+
+extends layout
+
+block content
+  
+
+    
+    .banner
+      .card.bg-dark.text-white
+        img#mybanner.card-img(src='/images/pexels-alexandr-podvalny-1003864.jpg' alt='marketing')
+        // Display thank you and total price
+        .card-img-overlay
+          h5.card-title Thank you for your purchase. 
+          h5.card-text Total Price: $#{totalprice}
+
+          a(href='/booking/all/' + currentUser.CustomerId) My Bookings
+          //- br
+          //- a(href="/") Home
+
+
+
+
+
+
+
+

@@ -1,37 +1,54 @@
+//- //Written by Mohammadmehdi Noroozi(Mehdi)
+
 extends layout
 
 block content
+  title Contacts
+  h1=title
 
-block content
-        
-        // Marketing section
-        .banner
-          .card.bg-dark.text-white
-            img#mybanner.card-img(src='/images/marketing.jpg' alt='marketing')
-            .card-img-overlay
-             
-              h5.card-title City breaks to suit every style!
-              p.card-text
-                | Make the most of your vacation time with our selection  
-                br
-                |of getaway options fit for summer fun
+  #mycontacts.container
+    br
+    br
+    h2 Contacts
+      br
+      br
+      if contactForms
+        each contact in contactForms
+          .card.mb-8(style= 'max-width: 600px;')
+            .row.no-gutters
+              .card-body
+                h3.card-title
+                  | Name: #{contact.name}
+                hr.rounded
+                h4.card-text
+                  | Subject: #{contact.subject}
+                h4.card-text
+                  | Message: #{contact.message}
+                h4.card-text
+                  | Email: #{contact.email}
+                h4.card-text
+                  | URL: #{contact.contacturl}
+                a(href="/contact/display-contact/" + contact.email) #{contact.name}
+
+           
 
 
-        .container
-          if contactForms     
-              each contact in contactForms
-                  h3= contact.name
-                  h4= contact.email
-                  h5= contact.subject 
-                  p= contact.message
-                  p= contact.contacturl
-                  a(href="/contact/display-contact/" + contact.contacturl) #{contact.name}
+//- Original Code written by Mehdi altered for styling
+  .container
+    if contactForms     
+      each contact in contactForms
+        h3= contact.name
+        h4= contact.email
+        h5= contact.subject 
+        p= contact.message
+        p= contact.contacturl
+        a(href="/contact/display-contact/" + contact.email) #{contact.name}
 
 
-        //- if contactForms
-        //-     h3= contactForms.name
-        //-     p= contactForms.email
+  //- if contactForms
+  //-     h3= contactForms.name
+  //-     p= contactForms.email
 
-        //- a(href="/contact") Back//
+  //- a(href="/contact") Back//
 
 

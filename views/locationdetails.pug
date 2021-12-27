@@ -1,0 +1,35 @@
+extends layout
+
+block content
+  title Location Details
+  h1= title
+
+  #mylocations.container
+
+    h2 Location Details - Edit/Delete Location
+      if !loc
+        h3 No such location
+      else 
+        .card.col-sm-5
+          img.card-img-top.mx-auto(src=loc.image style="width: 100%")
+          .card-body
+            h3.card-title= loc.lname
+            br
+            h6.card-text
+              | Address: #{loc.laddress}
+            h6.card-text
+              | City: #{loc.lcity}
+            h6.card-text
+              | Province/State: #{loc.lprovince}
+            h6.card-text
+              | country: #{loc.lcountry}
+            h6.card-text
+              | Phone: #{loc.lphone}
+            h6.card-text
+              | Fax: #{loc.lfax}
+            br
+            p.card-text
+              a.btn.btn-primary.col-3(href='/location/edit/'+ loc._id) Edit
+            p.card-text
+              a.btn.btn-danger.col-3(href='/location/delete/'+ loc._id) Delete
+

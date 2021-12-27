@@ -1,136 +1,135 @@
+//- //Written by Mohammadmehdi Noroozi(Mehdi)
+
 extends layout
 
 block content
-        
-        // Marketing section
-        .banner
-          .card.bg-dark.text-white
-            img#mybanner.card-img(src='/images/marketing.jpg' alt='marketing')
-            .card-img-overlay
-             
-              h5.card-title City breaks to suit every style!
-              p.card-text
-                | Make the most of your vacation time with our selection  
-                br
-                |of getaway options fit for summer fun
+  title Contact Us
 
-               
-        
-        // Section: Contact v.2
-        section.mb-4
-          // Section heading
-          h2.h1-responsive.font-weight-bold.text-center.my-4 Contact us
-          // Section description
-          p.text-center.w-responsive.mx-auto.mb-5
-            | Do you have any questions? Please do not hesitate to contact us directly. Our team will come back to you within
-            | a matter of hours to help you.
+  // Marketing section
+  .banner
+    .card.bg-dark.text-white
+      img#mybanner.card-img(src='/images/marketingcontact.jpg' alt='marketing')
+      .card-img-overlay
+
+
+
+  // Section: Contact v.2
+  .container
+    // Section heading
+    h2.h1-responsive.font-weight-bold.text-center.my-4 Contact us
+    // Section description
+    p.text-center.w-responsive.mx-auto.mb-5
+      | Do you have any questions? Please do not hesitate to contact us directly. Our team will come back to you within
+      | a matter of hours to help you.
+    .row
+      // Grid column
+      .col-md-9.mb-md-0.mb-5.contactcustom
+        form#contact-form(method='POST' action='/contact' )
+          // Grid row
           .row
             // Grid column
-            .col-md-9.mb-md-0.mb-5.contactcustom
-              form#contact-form(method='POST' action='/contact' )
-                // Grid row
-                .row
-                  // Grid column
-                  .col-md-6.p-3
-                    .md-form.mb-0
-                      label(for='name') Your name
-                      input#name.form-control(type='text' name='name' value=contactdata && contactdata.name required )
-                      
-                  // Grid column
-                  // Grid column
-                  .col-md-6.p-3
-                    .md-form.mb-0
-                      label(for='email') Your email
-                      input#email.form-control(type='email' name='email' value=contactdata && contactdata.email required)
-                      
-                  // Grid column
-                // Grid row
-                // Grid row
-                .row
-                  .col-md-12.p-3
-                    .md-form.mb-0
-                      label(for='subject') Subject
-                      input#subject.form-control(type='text' name='subject' value=contactdata && contactdata.subject required)
-                      
-                // Grid row
-                // Grid row
-                .row
-                  // Grid column
-                  .col-md-12.p-3
-                    .md-form
-                      label(for='message') Your message
-                      textarea#message.form-control.md-textarea.usermessage(type='text' name='message' value=contactdata && contactdata.message required)
-                      
-                // Grid row
-                .row
-                  .col-md-12.p-3
-                    .md-form.mb-0
-                      label(for='url') URL
-                      input#url.form-control(type='text' name='contacturl' value=contactdata && contactdata.contacturl required)
-
-                .text-center.text-md-left.mt-2
-                //- button.btn.btn-primary.btn-lg(type='submit') Send
-
-                //- <a class="btn btn-primary btn-lg" href="/thankyou" role="button">Send</a>
-                <button class="btn btn-primary" type="submit">Submit</button>
-                
-                //throwing error in filling form
-              if errors 
-                ul 
-                  each error in errors 
-                    li.alert.alert-danger= error
-                
-              //-   a.btn.btn-primary(onclick="document.getElementById('contact-form').submit();") Send
-              //- .status
-                button.btn.btn-primary.btn-lg(type='submit') Register//
+            .col-md-6.p-3
+              .md-form.mb-0
+                label(for='name') Your name
+                input#name.form-control(type='text' name='name' value=contactdata && contactdata.name required )
             // Grid column
             // Grid column
+            .col-md-6.p-3
+              .md-form.mb-0
+                label(for='email') Your email
+                input#email.form-control(type='email' name='email' value=contactdata && contactdata.email required)
 
-        // Section: Contact v.2
-           
-        .container
-          .row.g4
-            .col-md
-              h2.text-center Contact Info
-              
-              ul.list-group.list-group-flush.lead
-                li.list-group-item
-                  span.fw-bold Calgary Location
-                  br
-                  |  Travel Express 
-                  br
-                  |                         P.O. Box 4544, 150 - 5 Avenue S.W.
-                  br
-                  |                         Calgary, Alberta
-                  br
-                  |                         Canada T2P 3E2
-                  br
-                  |                         T: 403-366-8000
-                  br
-                  |                         F: 403-356-3030
-            .col-md
-              #map
-                iframe#googlemap(src='https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2507.4041355819036!2d-114.09072838434982!3d51.06408937956478!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x53716f9268a69e81%3A0xb1db5e68bd61e28!2sSouthern%20Alberta%20Institute%20of%20Technology!5e0!3m2!1sen!2sca!4v1626581934727!5m2!1sen!2sca' width='300' height='300' style='border:0;' allowfullscreen='' loading='lazy')
+            // Grid column
+            // Grid row
+            // Grid row
+            .row
+              .col-md-12.p-3
+                .md-form.mb-0
+                  label(for='subject') Subject
+                  input#subject.form-control(type='text' name='subject' value=contactdata && contactdata.subject required)
 
-        #edmonton.container
-          .row.g4
-            .col-md
-              // <h2 class="text-center ">Contact Info</h2>
-              ul.list-group.list-group-flush.lead
-                li.list-group-item
-                  span.fw-bold Edmonton Location
-                  br
-                  |  Travel Express 
-                  br
-                  |                         P.O. Box 4544, 150 - 5 Avenue S.W.
-                  br
-                  |                         Edmonton, Alberta
-                  br
-                  |                         Canada T2P 3E2
-                  br
-                  |                         T: 403-366-8000
-                  br
-                  |                         F: 403-356-3030
-            .col-md
-              #map
-                iframe#googlemap2(src='https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2507.4041355819036!2d-114.09072838434982!3d51.06408937956478!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x53716f9268a69e81%3A0xb1db5e68bd61e28!2sSouthern%20Alberta%20Institute%20of%20Technology!5e0!3m2!1sen!2sca!4v1626581934727!5m2!1sen!2sca' width='300' height='300' style='border:0;' allowfullscreen='' loading='lazy')
+            // Grid row
+            // Grid row
+            .row
+              // Grid column
+              .col-md-12.p-3
+                .md-form
+                  label(for='message') Your message
+                  textarea#message.form-control.md-textarea.usermessage(type='text' name='message' value=contactdata && contactdata.message required)
+
+            // Grid row
+            //- .row
+            //-   .col-md-12.p-3
+            //-     .md-form.mb-0
+            //-       label(for='url') URL
+            //-       input#url.form-control(type='text' name='contacturl' value=contactdata && contactdata.contacturl required)
+
+            .text-center.text-md-left.mt-2
+            //- button.btn.btn-primary.btn-lg(type='submit') Send
+
+            //- <a class="btn btn-primary btn-lg" href="/thankyou" role="button">Send</a>
+            <button class="btn btn-primary" type="submit">Submit</button>
+
+            //throwing error in filling form
+        if errors 
+          ul 
+            each error in errors 
+              li.alert.alert-danger= error
+
+        //-   a.btn.btn-primary(onclick="document.getElementById('contact-form').submit();") Send
+        //- .status
+          button.btn.btn-primary.btn-lg(type='submit') Register//
+      // Grid column
+      // Grid column
+
+  //- // Section: Contact v.2
+
+  //- #calgary.container
+  //-   .row.g4
+  //-     .col-md
+  //-       br
+  //-       h2.text-center Contact Info
+  //-         br
+  //-         br
+
+  //-       ul.list-group.list-group-flush.lead
+  //-         li.list-group-item
+  //-           span.fw-bold Calgary Location
+  //-           br
+  //-           |  Travel Express 
+  //-           br
+  //-           |                         P.O. Box 4544, 150 - 5 Avenue S.W.
+  //-           br
+  //-           |                         Calgary, Alberta
+  //-           br
+  //-           |                         Canada T2P 3E2
+  //-           br
+  //-           |                         T: 403-366-8000
+  //-           br
+  //-           |                         F: 403-356-3030
+  //-     .col-md
+  //-       #map
+  //-         iframe#googlemap(src='https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2507.4041355819036!2d-114.09072838434982!3d51.06408937956478!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x53716f9268a69e81%3A0xb1db5e68bd61e28!2sSouthern%20Alberta%20Institute%20of%20Technology!5e0!3m2!1sen!2sca!4v1626581934727!5m2!1sen!2sca' width='300' height='300' style='border:0;' allowfullscreen='' loading='lazy')
+
+  //- #edmonton.container
+  //-   .row.g4
+  //-     .col-md
+  //-       // <h2 class="text-center ">Contact Info</h2>
+  //-       ul.list-group.list-group-flush.lead
+  //-         li.list-group-item
+  //-           span.fw-bold Edmonton Location
+  //-           br
+  //-           |  Travel Express 
+  //-           br
+  //-           |                         P.O. Box 4544, 150 - 5 Avenue S.W.
+  //-           br
+  //-           |                         Edmonton, Alberta
+  //-           br
+  //-           |                         Canada T2P 3E2
+  //-           br
+  //-           |                         T: 403-366-8000
+  //-           br
+  //-           |                         F: 403-356-3030
+  //-     .col-md
+  //-       #map
+  //-         iframe#googlemap2(src='https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2507.4041355819036!2d-114.09072838434982!3d51.06408937956478!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x53716f9268a69e81%3A0xb1db5e68bd61e28!2sSouthern%20Alberta%20Institute%20of%20Technology!5e0!3m2!1sen!2sca!4v1626581934727!5m2!1sen!2sca' width='300' height='300' style='border:0;' allowfullscreen='' loading='lazy')

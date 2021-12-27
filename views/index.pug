@@ -1,33 +1,28 @@
 extends layout
 
 block content
-    .banner
-      .card.bg-dark.text-white
-        img#mybanner.card-img(src='/images/marketing.jpg' alt='marketing')
-        .card-img-overlay
-         
-          h5.card-title City breaks to suit every style!
-          p.card-text
-            | Make the most of your vacation time with our selection  
-            br
-            |of getaway options fit for summer fu
-          p=dt
+  title Home
 
-      .card.welcomeuser(style='width: 18rem;')
-        img.card-img-top(src='/images/greeting.jpg' alt='...')
-        .card-body.text-center
-          p.text-center
-            h2 #{greet}
-        
-    #mypackage.container.col-12
-      h1 Browse by Vacation Destination
-        .card-group.gap-3
-          each pack in packageList
-            .card.mt-5             
-                img.card-img-top(src=pack.imagpath alt='canada')
-                .card-body
-                  h5.card-title= pack.PkgName
-                  p.card-text
-                    | Price: #{pack.PkgBasePrice}
+  .banner
+    .card.bg-dark.text-white
+      img#mybanner.card-img(src='/images/marketing.png' alt='Travel Experts')
+      .card-img-overlay
 
-                  a.btn.btn-primary(href='/package-single/'+ pack.PackageId)  Details
+        h5.card-title Bringing joy from every journey!
+
+
+  #mypackage.container.col-12
+    br
+    br
+    h3 Browse by Vacation Destination 
+      br
+      .card-group.gap-3
+        each pack in packageList
+          .card.mt-5            
+            img.card-img-top(src=pack.imagpath alt='canada')
+            .card-body.text-center
+              h4.card-title.text-center= pack.PkgName
+              h4.card-text.text-center
+                | Price: $#{pack.PkgBasePrice}
+                br
+              a.btn.btn-primary(href='/package-single/'+ pack.PackageId)  Details

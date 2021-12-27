@@ -10,7 +10,11 @@ var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 var contactRouter = require('./routes/contact');
 var bookingRouter = require('./routes/booking');
-var adminRouter = require('./routes/admin')
+var adminRouter = require('./routes/admin');
+var locationsRouter = require('./routes/locations');
+var checkoutRouter = require('./routes/checkout');
+var datamanagersRouter = require('./routes/datamanagers');
+var dataagentsRouter = require('./routes/dataagents');
  
 const mongoSanitize = require("express-mongo-sanitize");
  
@@ -78,8 +82,13 @@ require("./my-passport").init(app);
 app.use('/users', usersRouter);
 app.use('/contact', contactRouter);
 app.use('/booking', bookingRouter);
+app.use('/checkout', checkoutRouter)
 app.use('/admin',adminRouter);
-app.use('/',indexRouter);
+app.use('/datamanagers',datamanagersRouter);
+app.use('/dataagents',dataagentsRouter);
+app.use('/location', locationsRouter);
+app.use('/', indexRouter);
+
  
 // app.use('/products', productsRouter);//
  

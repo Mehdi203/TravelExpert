@@ -1,48 +1,38 @@
+//- //Written by Mohammadmehdi Noroozi(Mehdi)
 extends layout
 
 block content
-        // Marketing section
-        .banner
-          .card.bg-dark.text-white
-            img#mybanner.card-img(src='/images/marketing.jpg' alt='marketing')
-            .card-img-overlay
-             
-              h5.card-title City breaks to suit every style!
-              p.card-text
-                | Make the most of your vacation time with our selection  
-                br
-                |of getaway options fit for summer fun
+  title Login
 
+  section.vh-100.gradient-custom.loginbackg
+      
+      .container.py-5.h-100
+        if !hideLogin
+          .row.d-flex.justify-content-center.align-items-center.h-100
+            .col-12.col-md-8.col-lg-6.col-xl-5
+              .card.bg-primary.text-white(style='border-radius: 1rem;')
+                .card-body.p-5.text-center
+                  .mb-md-5.mt-md-4.pb-5
+                    h2.fw-bold.mb-2.text-uppercase Login
+                    p.text-white-50.mb-5 Please enter your username and password!
+                    //- .form-outline.form-white.mb-4(action="/login" method="POST")//
+                    form.form-outline.form-white.mb-4(action="/login" method="POST")
+                      .col
+                        label.form-label(for='typeEmailX') 
+                        input#typeEmailX.form-control.form-control-lg(name="username" placeholder="Username" type="text")
+                        
+                      .col
+                        label.form-label(for='typePasswordX') 
+                        input#typePasswordX.form-control.form-control-lg(name="password" type="password" placeholder="Password")
+                        
+                      .col
+                        //- button.btn.btn-primary.mt-2 Log In page
+                        button.btn.btn-outline-light.btn-lg.px-5.mt-5(type='submit') Login
 
-        section.vh-100.gradient-custom.loginbackg
-            
-            .container.py-5.h-100
-              if !hideLogin
-                .row.d-flex.justify-content-center.align-items-center.h-100
-                  .col-12.col-md-8.col-lg-6.col-xl-5
-                    .card.bg-primary.text-white(style='border-radius: 1rem;')
-                      .card-body.p-5.text-center
-                        .mb-md-5.mt-md-4.pb-5
-                          h2.fw-bold.mb-2.text-uppercase Login
-                          p.text-white-50.mb-5 Please enter your username and password!
-                          //- .form-outline.form-white.mb-4(action="/login" method="POST")//
-                          form.form-outline.form-white.mb-4(action="/login" method="POST")
-                            .col
-                              label.form-label(for='typeEmailX') 
-                              input#typeEmailX.form-control.form-control-lg(name="username" placeholder="Username" type="text")
-                              
-                            .col
-                              label.form-label(for='typePasswordX') 
-                              input#typePasswordX.form-control.form-control-lg(name="password" type="password" placeholder="Password")
-                              
-                            .col
-                              //- button.btn.btn-primary.mt-2 Log In page
-                              button.btn.btn-outline-light.btn-lg.px-5.mt-5(type='submit') Login
-    
-                        div
-                          p.mb-0
-                            | Don&apos;t have an account? 
-                            a.text-white-50.fw-bold(href='/users/sign-up') Sign Up
+                  div
+                    p.mb-0
+                      | Don&apos;t have an account? 
+                      a.text-white-50.fw-bold(href='/users/sign-up') Sign Up
 
 
 

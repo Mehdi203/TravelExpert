@@ -1,4 +1,5 @@
-// Require the mongoose module//
+//Written by Mohammadmehdi Noroozi(Mehdi)
+
 var mongoose = require('mongoose');
 
 var uniqueValidator = require('mongoose-unique-validator');
@@ -58,7 +59,8 @@ var uniqueValidator = require('mongoose-unique-validator');
                 },
                 message: props => `${props.value} is not a valid URL slug.`
             },
-            required: 'Please enter the contact url slug'
+            // default: Math.floor(1000 + Math.random() * 9000), 
+            // required: 'Please enter the contact url slug'
         },
 
         //  more  fields  defined  below

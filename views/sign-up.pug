@@ -1,68 +1,62 @@
+//- //Written by Mohammadmehdi Noroozi(Mehdi)
 extends layout
 
 block content
-        // Marketing section
-        .banner
-          .card.bg-dark.text-white
-            img#mybanner.card-img(src='/images/marketing.jpg' alt='marketing')
-            .card-img-overlay
-             
-              h5.card-title City breaks to suit every style!
-              p.card-text
-                | Make the most of your vacation time with our selection  
-                br
-                |of getaway options fit for summer fun
+  br
+  br
+  br
+  br
+  
+  title Signup
+  br
+
+  // Registration
+  section.vh-100.my-2(style='background-color: #eee;')
+    #signup.container.h-120
+      .row.d-flex.justify-content-center.align-items-center.h-100
+        .col-lg-12.col-xl-11
+          .card.text-black(style='border-radius: 25px;')
+            .card-body.p-md-5
+              .row.justify-content-center
+                .col-md-10.col-lg-6.col-xl-5.order-2.order-lg-1
+                  p.text-center.h1.fw-bold.mb-5.mx-1.mx-md-4.mt-4 Sign up
+                  form.mx-1.mx-md-4(action='/users/sign-up' method='POST')
+                    .d-flex.flex-row.align-items-center.mb-4
+                      i.fas.fa-user.fa-lg.me-3.fa-fw
+                      .form-outline.flex-fill.mb-0
+                        input#form3Example1c.form-control(type='text' name='fname' value=registerdata && registerdata.fname required)
+                        label.form-label(for='form3Example1c') Your First Name
+                    .d-flex.flex-row.align-items-center.mb-4
+                      i.fas.fa-user.fa-lg.me-3.fa-fw
+                      .form-outline.flex-fill.mb-0
+                        input#form3Example1c.form-control(type='text' name='lname' value = registerdata && registerdata.lname required)
+                        label.form-label(for='form3Example1c') Your Last Name
+                    .d-flex.flex-row.align-items-center.mb-4
+                      i.fas.fa-envelope.fa-lg.me-3.fa-fw
+                      .form-outline.flex-fill.mb-0
+                        input#form3Example3c.form-control(type='email' name='email'  value= registerdata && registerdata.email required)
+                        label.form-label(for='form3Example3c') Your Email
+                    .d-flex.flex-row.align-items-center.mb-4
+                      i.fas.fa-envelope.fa-lg.me-3.fa-fw
+                      .form-outline.flex-fill.mb-0
+                        input#form3Example3c.form-control(type='text' name='username'  value= registerdata && registerdata.username required)
+                        label.form-label(for='form3Example3c') Username
+                    .d-flex.flex-row.align-items-center.mb-4
+                      i.fas.fa-lock.fa-lg.me-3.fa-fw
+                      .form-outline.flex-fill.mb-0
+                        input#form3Example4c.form-control(type='password' name='password' value= registerdata && registerdata.password required)
+                        label.form-label(for='form3Example4c') Password
 
 
+                    .d-flex.justify-content-center
+                      button.btn.btn-primary.btn-lg(type='submit') Register
+                    if errors 
+                      ul 
+                        each error in errors 
+                          li.alert.alert-danger= error
 
-
-        // Registration
-        section.vh-100.my-2(style='background-color: #eee;')
-          .container.h-100
-            .row.d-flex.justify-content-center.align-items-center.h-100
-              .col-lg-12.col-xl-11
-                .card.text-black(style='border-radius: 25px;')
-                  .card-body.p-md-5
-                    .row.justify-content-center
-                      .col-md-10.col-lg-6.col-xl-5.order-2.order-lg-1
-                        p.text-center.h1.fw-bold.mb-5.mx-1.mx-md-4.mt-4 Sign up
-                        form.mx-1.mx-md-4(action='/users/sign-up' method='POST')
-                          .d-flex.flex-row.align-items-center.mb-4
-                            i.fas.fa-user.fa-lg.me-3.fa-fw
-                            .form-outline.flex-fill.mb-0
-                              input#form3Example1c.form-control(type='text' name='fname' value=registerdata && registerdata.fname required)
-                              label.form-label(for='form3Example1c') Your First Name
-                          .d-flex.flex-row.align-items-center.mb-4
-                            i.fas.fa-user.fa-lg.me-3.fa-fw
-                            .form-outline.flex-fill.mb-0
-                              input#form3Example1c.form-control(type='text' name='lname' value = registerdata && registerdata.lname required)
-                              label.form-label(for='form3Example1c') Your Last Name
-                          .d-flex.flex-row.align-items-center.mb-4
-                            i.fas.fa-envelope.fa-lg.me-3.fa-fw
-                            .form-outline.flex-fill.mb-0
-                              input#form3Example3c.form-control(type='email' name='email'  value= registerdata && registerdata.email required)
-                              label.form-label(for='form3Example3c') Your Email
-                          .d-flex.flex-row.align-items-center.mb-4
-                            i.fas.fa-envelope.fa-lg.me-3.fa-fw
-                            .form-outline.flex-fill.mb-0
-                              input#form3Example3c.form-control(type='text' name='username'  value= registerdata && registerdata.username required)
-                              label.form-label(for='form3Example3c') Username
-                          .d-flex.flex-row.align-items-center.mb-4
-                            i.fas.fa-lock.fa-lg.me-3.fa-fw
-                            .form-outline.flex-fill.mb-0
-                              input#form3Example4c.form-control(type='password' name='password' value= registerdata && registerdata.password required)
-                              label.form-label(for='form3Example4c') Password
-
-                          
-                          .d-flex.justify-content-center.mx-4.mb-3.mb-lg-4
-                            button.btn.btn-primary.btn-lg(type='submit') Register
-                          if errors 
-                            ul 
-                              each error in errors 
-                                li.alert.alert-danger= error
-
-                      .col-md-10.col-lg-6.col-xl-7.d-flex.align-items-center.order-1.order-lg-2
-                        img.img-fluid(src='/images/register.jpg' alt='Sample image')
+                .col-md-10.col-lg-6.col-xl-7.d-flex.align-items-center.order-1.order-lg-2
+                  img.img-fluid(src='/images/register.jpg' alt='Sample image')
 
 
 //- //latest version- August 08

@@ -1,37 +1,79 @@
+//- 
+  // --------------------------- Booking-edit.pug file --------------------------- //
+
+  //**
+     * Name: Fariha Siddiqui
+     * Student ID: 000880957
+     * Date: 12-08-2021
+     * Purpose: THREADED PROJECT OF PROJ-009-004
+     ** //
+
+  // ---------------------------------------------------------------------------- //
+
+
 extends layout
 
 block content
+  title Edit Booking
 
-block content
+  // --------------------------- Banner --------------------------- //
 
-  h1= title
+  .banner
+    .card.bg-dark.text-white
+      img#mybanner.card-img(src='/images/passport.jpg' alt='marketing')
+      .card-img-overlay
+        h5.card-title 
+        p.card-text
 
-  h3 Edit product
+  // --------------------------- Edit Booking Title - Booking Number --------------------------- //
 
-  form.row.g-3(method='POST' action="")
-    .col-md-6
-      label.form-label(for='inputBookingDate') Date:
-      input#inputBookingDate.form-control(type='string' name='BookingDate' disabled value=bookings && BookDate)
-    .col-md-6
-      label.form-label(for='inputBookingNo') Booking Reference:
-      input#inputBookingNo.form-control(type='text' name='BookingNo' disabled value=bookings && bookings.BookingNo)
-    //- .col-12
-    //-   label.form-label(for='inputdescription') Description
-    //-   textarea#inputdescription.form-control(rows="3" name='description')
-    //-     | #{bookings && bookings.description}
-    .col-md-6
-      label.form-label(for='inputTravelerCount') Number of Travellers:
-      input#inputTravelerCount.form-control(type='number' name='TravelerCount' value=bookings && bookings.TravelerCount)    
-    .col-md-6
-      button.btn.btn-primary.col-12.mt-4(type='submit') Update
+  h1 #{title}: #{bookings.BookingNo}
+  
+  .container
+  
+    // --------------------------- Form for Updating Number of Travellers --------------------------- //
 
-      a.btn.btn-primary.col-12.mt-4(href='/booking/' + (bookings && bookings.BookingId)) Cancel
+    form.row.g-3(method='POST' action="")
+      .row.g-3
+        .col
+          label.form-label(for='inputBookingDate')
+          b Booking Date:
+          input#inputBookingDate.form-control(type='string' name='BookingDate' disabled value=bookings && BookDate)
+        .col
+          label.form-label(for='inputBookingNo')
+          b Booking Reference#:
+          input#inputBookingNo.form-control(type='text' name='BookingNo' disabled value=bookings && bookings.BookingNo)
+        .col
+          label.form-label(for='inputTravelerCount')
+          b Number of Travellers:
+          input#inputTravelerCount.form-control(type='number' required name='TravelerCount' value=bookings && bookings.TravelerCount)
 
-      // Another way for doing the cancel button
-        if add
-          a.btn.btn-primary.col-12.mt-4(href= '/' ) Cancel
-        else 
-          a.btn.btn-primary.col-12.mt-4(href='/product/details/'+prod._id) Cancel
+      .row.g-3
+        .col
+          label.form-label(for='inputBookingId')
+          b Booking ID:
+          input#inputBookingId.form-control(type='number' name='BookingId' disabled value=bookings && bookings.BookingId)
+        .col
+          label.form-label(for='inputTripTypeId')
+          b Trip Type:
+          input#inputTripTypeId.form-control(type='text' name='TripTypeId' disabled value=bookings && bookings.TripTypeId)
+        .col
+          label.form-label(for='inputPackageId')
+          b Package ID:
+          input#inputPackageId.form-control(type='number' name='PackageId' disabled value=bookings && bookings.PackageId)
+
+  
+      // --------------------------- RETURN & UPDATE Buttons --------------------------- //
+
+      .row.g-3
+        .col-6
+          a.btn.btn-secondary.col-12.mt-4(href='/booking/' + (bookings && bookings.BookingId)) RETURN
+
+        .col-6
+          button.btn.btn-success.col-12.mt-4(type='submit') UPDATE
+
+
+  // --------------------------- Handling Input Errors (if any) --------------------------- //
 
   .container
       if errors    

@@ -1,0 +1,30 @@
+extends layout
+
+block content
+  title Our Locations
+
+  #mylocations.container.col-12
+    br 
+    br
+    h2 Our Locations
+      .card-group.gap-3
+        each loc in locations
+          .card.mt-5
+      
+            img.card-img-top(src=loc.image)
+            .card-body
+            
+                h3.card-title= loc.lname
+            h6.card-text
+              | Address: #{loc.laddress}
+            h6.card-text
+              | City: #{loc.lcity}
+            h6.card-text
+              | Province/State: #{loc.lprovince}
+            h6.card-text
+              | country: #{loc.lcountry}
+            h6.card-text
+              | Phone: #{loc.lphone}
+            h6.card-text
+              | Fax: #{loc.lfax}
+      br

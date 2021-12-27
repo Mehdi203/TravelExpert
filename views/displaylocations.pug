@@ -1,0 +1,26 @@
+extends layout
+
+block content
+  title Our Locations
+
+
+  #mylocations.container.col-12
+    br 
+    br
+    h2 Our Locations
+      .card-group.gap-3
+        each loc in locations
+          .card.mt-5
+            a(href='/location/details/' + loc._id)
+              img.card-img-top(src=loc.image)
+            .card-body
+              a(href='/location/details/' + loc._id)
+                h3.card-title= loc.lname
+              h4.card-text
+                | Phone: #{loc.lphone}
+                br
+                | Email: #{loc.lemail}
+      br
+      br
+      a.btn.btn-primary(href='/location/add') Add New Location
+

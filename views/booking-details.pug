@@ -1,34 +1,101 @@
+//- 
+  // --------------------------- Booking-details.pug file --------------------------- //
+
+  //**
+     * Name: Fariha Siddiqui
+     * Student ID: 000880957
+     * Date: 12-08-2021
+     * Purpose: THREADED PROJECT OF PROJ-009-004
+     ** //
+
+  // ---------------------------------------------------------------------------- //
+
+
 extends layout
 
 block content
+  title Booking Details
 
-block content
+  // --------------------------- Banner --------------------------- //
 
-        // Marketing section
-        .banner
-          .card.bg-dark.text-white
-            img#mybanner.card-img(src='/images/marketing.jpg' alt='marketing')
-            .card-img-overlay
-              h5.card-title The Best Travel Website!
-              p.card-text
-                | Lorem, ipsum dolor sit amet consectetur adipisicing elit. 
-                br 
-                |  Voluptas voluptatum,
-                |                     ad
-                |                     odit pa dolorem veniam assumenda atque.    
+  .banner
+    .card.bg-dark.text-white
+      img#mybanner.card-img(src='/images/passport.jpg' alt='marketing')
+      .card-img-overlay
+        h5.card-title 
+        p.card-text
 
-        
-        .container
-          if bookings
-                  h3= "Booking Date: " + BookDate
-                  h4= "Passengers Travelling: " + bookings.TravelerCount
-                  h5= "Booking Reference Number: " + bookings.BookingNo 
-                  p= "Customer ID: " + bookings.CustomerId
-  
-  
-          a(href="/booking/all") Back
-          if inFuture
-            a.btn.btn-primary.col-12(href='/booking/edit/' + bookings.BookingId ) EDIT
-          if Active  
-            a.btn.btn-primary.col-12(href='/booking/edit/' + bookings.BookingId ) CANCEL
 
+  // --------------------------- Tabular Display of Booking Details --------------------------- //
+
+  #booking.container
+    if bookings
+            br
+          
+            h2 Booking Details:
+            br
+
+            .container
+              .row.row-cols-2.row-cols-lg-5.g-2.g-lg-3
+                .col
+                  .p-3.border.bg-secondary.bookhead
+                    b Destination
+                .col
+                  .p-3.border.bg-secondary.bookhead
+                    b Trip Start
+                .col
+                  .p-3.border.bg-secondary.bookhead
+                    b Trip End
+                .col
+                  .p-3.border.bg-secondary.bookhead 
+                    b Travellers
+                .col
+                  .p-3.border.bg-secondary.bookhead
+                    b Itinerary Number
+                .col
+                  .p-3.border.bg-light #{bookingdetails.Destination}
+                .col
+                  .p-3.border.bg-light #{bookingdetails.TripStart.toDateString()}
+                .col
+                  .p-3.border.bg-light #{bookingdetails.TripEnd.toDateString()}
+                .col
+                  .p-3.border.bg-light #{bookings.TravelerCount}
+                .col
+                  .p-3.border.bg-light #{bookingdetails.ItineraryNo}
+
+            br
+
+            // --------------------------- Card Display of Booking Price Details --------------------------- //
+
+            .card.text-center.cost-details
+              .card-header
+                | Booking Reference#: #{bookings.BookingNo}
+              .card-body
+                h5.card-title 
+                  p Booking Cost: $#{bookings.TravelerCount * bookingdetails.BasePrice}
+                p.card-text Booking Date: #{bookings.BookingDate.toDateString()}
+                hr
+              
+                // --------------------------- BACK Button --------------------------- //
+
+                a.btn.btn-secondary.column-3.graybuttons(href="/booking/all/" + bookings.CustomerId ) BACK
+    
+                // --------------------------- CHANGE Button --------------------------- //
+    
+                // ----- Booking can be updated only if Trip Start Date is in Future
+                if bookings.Active && inFuture
+                  a.btn.btn-secondary.column-3.graybuttons(href='/booking/edit/' + bookings.BookingId target='_blank') CHANGE
+                br
+                br
+
+                // ----- Booking can be Canceled only if Trip Start Date is in Future and Booking is Active
+                if bookings.Active && inFuture
+                  form#cancellation(action='/booking/cancel' method='POST')
+                      input(type='hidden' name="BookingId" value= bookings && bookings.BookingId)
+                      button.btn.btn-danger.col-4(type='submit') CANCEL
+
+                  // --------------------------- Cancellation Policy Reminder --------------------------- //
+
+              .card-footer.text-muted
+                | 
+                i Please make sure to read our Cancellation Policy before cancelling your booking with us! Thank you!

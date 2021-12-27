@@ -1,7 +1,10 @@
+//Written by Mohammadmehdi Noroozi(Mehdi)
+
 var express = require('express');
 var router = express.Router();
 
 const Contact = require('../models/contactMdl').Contact;
+
 
 /* GET users listing. */
 // router.get('/', function(req, res, next) {
@@ -21,7 +24,7 @@ router.get('/display-contact', function (req, res, next) {
 router.get('/display-contact/:purl', function(req, res, next) {
   const cnurl = req.params.purl;
 
-  Contact.findOne({contacturl: cnurl},(err, contacts) => {
+  Contact.findOne({email: cnurl},(err, contacts) => {
     
     res.render('display-single-contact', { contactForm: contacts });
     console.log(contacts)

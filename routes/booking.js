@@ -1,157 +1,141 @@
+// --------------------------- BOOKING CONTROLLER --------------------------- //
+
+  // //**
+  // * Name: Fariha Siddiqui
+  // * Student ID: 000880957
+  // * Date: 12-08-2021
+  // * Purpose: THREADED PROJECT OF PROJ-009-004
+  // ** //
+
+// ---------------------------------------------------------------------------- //
+
+
+// --------------------------- Require express module --------------------------- //
+
 var express = require('express');
 var router = express.Router();
-const Booking = require('../models/bookMdl').Booking;
-const BookingDetail = require('../models/bookdtlMdl').BookingDetail;
+
+// --------------------------- Require User-Defined Booking module --------------------------- //
+const Booking = require("../models/bookMdl").Booking;
+
+// --------------------------- Require User-Defined Booking Details module -------------------- //
+const BookingDetails = require("../models/bookDetailsMdl").BookingDetails;
 
 
-/* GET home page. */
-router.get('/', function(req, res, next) {
-    res.render('booking-list', { title: 'Booking' });
+
+// --------------------------- CANCEL a Booking --------------------------- //
+router.post("/cancel", function (req, res, next) {
+
+    const booking = new Booking();
+
+    booking.BookingId = req.body.BookingId;
+    
+    // -------- Updating and setting Active to false 
+    Booking.findByIdAndUpdate(booking.BookingId, {$set:{Active:false}}, req.body, function (err, booking) {
+    
+        // -------- Handle Error
+        if (err) return processErrors(err, "booking-details", req, res);
+        
+        // -------- Redirect to All Bookings page after Cancellation
+        res.redirect("/booking/all/" + booking.CustomerId);
+    });
 });
 
 
-// // Show the create form
-// router.get('/create', function(req, res, next) {
-//     res.render('contact-create', { title: 'Thank You' });
-// });
-
-/* GET all posts listing. */
-router.get('/all', function (req, res, next) {
-
-    Booking.find({}, (err, bookings) => {
-    if (err) throw err;
-    res.render('booking-list', { title: "My Bookings", bookings });
-    });
-    });
-
-
-// To create a new booking
-router.post('/', function(req, res, next) {
-    console.log('booking/add');
-    const data = req.body;
-    const post = new Booking();
-    console.log("Logging Data to Console");
-    console.log(data);
-
-    Booking.findOne({}, {}, { sort: { 'BookingId': -1 } }, (err, bookings) => {
-        // console.log(bookings.BookingId);
-        // var bid = Number(bookings.BookingId) + 1;
-        // console.log(bid);
-
-        post.BookingId = Number(bookings.BookingId) + 1;
-        post.BookingDate = new Date();
-        post._id = Number(post.BookingId);
-        post.BookingNo = post.BookingId;
-        post.TravelerCount = Number(data.numTraveler);
-        post.CustomerId = Number(data.custid);
-        post.PackageId = Number(data.packid);
-        post.TripTypeId = data.triptype;
-        console.log(post);
-
-        // Add to bookings collection
-        post.save(err => {
-            // if(err) throw err;
-            if (err) {
-                console.log('error');
-                console.log(err);
-                const errorArray = [];
-                const errorKeys = Object.keys(err.errors);
-                errorKeys.forEach(key => errorArray.push(err.errors[key].message));
-                return res.render("booking", {
-                    postdata: req.body,
-                    errors: errorArray
-                });
-            }
-
-            // Add to bookingdetails collection
-            console.log('starting bookingdetails');
-            BookingDetail.findOne({}, {}, { sort: { 'ItineraryNo': -1 } }, (err, bookingdetails) => {
-                const postdtl = new BookingDetail();
-                console.log('in bookingdetails');
-                console.log(bookingdetails);
-                postdtl.BookingDetailId = post.BookingId;
-                postdtl.BookingId = post.BookingId;
-                postdtl._id = Number(post.BookingId);
-                postdtl.ItineraryNo = Number(bookingdetails.ItineraryNo) + 1;
-                postdtl.TripStart = data.startdate;
-                postdtl.TripEnd = data.enddate;
-                postdtl.Description = data.desc;
-                postdtl.Destination = data.dest;
-                postdtl.BasePrice = data.price;
-                postdtl.AgencyCommission = data.comm;
-                postdtl.ClassId = data.class;
-                console.log(postdtl);
-                postdtl.save(err => {
-                    if (err) {
-                        console.log('error');
-                        console.log(err);
-                        const errorArray = [];
-                        const errorKeys = Object.keys(err.errors);
-                        errorKeys.forEach(key => errorArray.push(err.errors[key].message));
-                        return res.render("booking", {
-                            postdata: req.body,
-                            errors: errorArray
-                        });
-                    }
-                });
-
-                console.log('no error');
-                res.render("thankyou", {
-                    fname: data.custid
-                });
-            });
-
-
-        });
-    });
-
-
-});
-
-
-
-//show a single booking by BOOKID 
+// ------------------- Show a single booking by BookingID ------------------------ //
 router.get('/:bookid', function(req, res, next) {
     const bid = req.params.bookid;
   
+    // -------- Get all Booking Data by bookid
     Booking.findOne({BookingId: bid}, (err, bookings) => {
-        const BookDate = bookings.BookingDate.toDateString();
-        var inFuture = bookings.BookingDate > new Date();
+        // -------- Handle Error
+        if (err) throw err;
+    
+        // -------- Get all Booking Details Data by BookingID
+        BookingDetails.findOne({BookingId: bookings.BookingId}, (err, bookingdetails) => {
+          
+          // -------- Handle Error
+          if (err) throw err;
+  
+          // -------- Define a boolean to value to check if Trip Start Date is in future
+          const BookDate = bookingdetails.TripStart.toDateString();
+          var inFuture = bookingdetails.TripStart > new Date();
 
-        res.render('booking-details', { title: "My Bookings", bookings, BookDate, inFuture });
+        // -------- Show Booking Details page
+        res.render('booking-details', { title: "Booking Details", bookings, bookingdetails, BookDate, inFuture });
 
     });
+  });
 });
 
 
-// /* GET Booking Edit form with given booking Id  */
+// ------------------- GET all bookings list ------------------------ //
+router.get('/all/:custid', function (req, res, next) {
+
+  const cid = Number(req.params.custid);
+
+      // -------- Get all Booking Data by bookid
+      Booking.find({CustomerId: cid}, (err, bookings) => {
+          // -------- Handle Error
+          if (err) throw err;
+
+        // -------- Get all Booking Details Data by BookingID
+        BookingDetails.find({CustomerId: cid}, (err, bookingdetails) => {
+
+          // -------- Define a boolean to value to check if Booking is old or not
+          var oldBooking = bookingdetails.TripStart < new Date();
+          // -------- Handle Error
+          if (err) throw err;
+
+          // -------- Show All Bookings page
+          res.render('booking-list', { title: "My Bookings", bookings, bookingdetails, oldBooking });
+      });
+});
+});
+
+
+// ------------------- Edit Booking by BookingID ------------------------ //
 router.get('/edit/:bookid', function(req, res, next) {
     const bid = req.params.bookid;
 
+    // -------- Get Booking Data by BookingID
     Booking.findOne({BookingId: bid}, (err, bookings) => {
-        const BookDate = bookings.BookingDate.toDateString();
-        res.render('booking-edit', { title: "My Bookings", bookings, BookDate });
 
+      // -------- Handle Error
+          if (err) throw err;
+          const BookDate = bookings.BookingDate.toDateString();
+          
+          // -------- Show Booking-Update form
+          res.render('booking-edit', { title: "Edit Booking", bookings, BookDate });
     });
 });
 
 
-// Process the edited booking data
+// ------------------- Process the edited Booking Data ------------------------ //
 router.post("/edit/:bookid", function (req, res, next) {
     const bookid = req.params.bookid;
     new Booking(req.body).validate((err) => {
-      // To validate the data before updating
+      
+      // -------- To validate the data before updating
       if (err)
         return processErrors(err, "booking-details", req, res, {
-          bookings: { ...req.body, _id: bookid },
+          booking: { ...req.body, _id: bookid },
         });
+
+        // -------- Updating Booking Data
         Booking.findByIdAndUpdate(bookid, req.body, function (err) {
         if (err)
           return processErrors(err, "booking-details", req, res);
-        res.redirect("/booking/" + bookid);
+        
+          // -------- Redirect to previous page: Booking Details page
+          res.redirect("/booking/" + bookid);
       });
     });
 });
+
+
+
+// -------------- Process Errors for Error Handling--------------------- //
 
 function processErrors(errs, pageTemplate, req, res, data) {
     // If there are errors from the Model schema
@@ -164,5 +148,6 @@ function processErrors(errs, pageTemplate, req, res, data) {
       ...data,
     });
   }
+  
 
 module.exports = router;

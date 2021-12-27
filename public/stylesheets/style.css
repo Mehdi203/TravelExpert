@@ -1,25 +1,75 @@
 @charset "UTF-8";
-
 /*css customized style*/
-
-/*import font */
-
-body{
-background-color: rgb(232, 233, 235);
-/* background-image: url("images/background1.jpg"); */
-
+/* -------------------------------General appearance consistant accross site-------------------------------  */
+* { 
+    font-family: Gotham, "Helvetica Neue", Helvetica, Arial, "sans-serif";
+	/* Include the padding and border in the calculated width and height of an element  */
+	box-sizing: border-box;
 }
+
+body {
+	/*background-color:#EFEFEF;*/
+	line-height: 1.6;
+	/* set the margin to 0 so you control the margin not the browser default  */
+	margin: 0px;
+    color: #194e6a;
+}
+
+h1 {
+	color: #194e6a;
+	font-size: 4vw;
+	line-height: 100%;
+    text-align: center;
+    margin: 1em;
+}
+
+
+h2 {
+	color: #194e6a;
+	font-size: 3vw;
+	line-height: 100%;
+	font-weight: 300;
+}
+h3 {
+	color:#194e6a;
+	font-size: 2vw;
+	line-height: 100%;
+	font-weight: 450;
+}
+h4 {
+	color: #194e6a;
+	font-size: 1.5vw;
+	line-height: 100%;
+	font-weight: 300;
+}
+
+p{
+    color: #194e6a;
+    font-size: 1.25vw ;
+    font-weight: bold;
+}
+
+/* Navigation Bar */
+
+
+
 .navbar-custom{
-    background-color: rgb(5, 119, 128);
-padding: 1em;
-/* font-size: 14px; */
+    background-color:#236c93;
+    padding: 2vw;
+    font-size: large;
 }
+
+
+.dropdown {
+    position: relative;
+    display: inline-block;
+  }
 
 .dropdown:hover .dropdown-menu{
-display: block;
-background-color: rgb(197, 231, 201);;
+display: inline-block;
+background-color: rgb(205, 236, 236);
+color: #236c93;
 }
-
 .welcomeuser{
     /* border: 1px solid black; */
 
@@ -30,7 +80,7 @@ background-color: rgb(197, 231, 201);;
   
 }
 .colorindexpage{
-    color: rgb(37, 37, 201);
+    color:#236c93;
 }
 
 .mygallery{
@@ -43,34 +93,30 @@ background-color: rgb(197, 231, 201);;
         width: 80rem;
 }
 
-#mysearch{
-    margin-left:10vw ;
-    margin-right:2vw ;
-}
 
 #sub_button{
-    background-color: rgb(197, 231, 201);
+    background-color: rgb(205, 236, 236);
+    color: #194e6a;
 }
 
 #mybanner{
     width: 100%;
-    height: 350px;
+    height: 300px;
     object-fit: cover;
+    margin-top: 7em;
+    color:white;
+    font-weight: bold;
+
 }
 .banner .card-title{
-    margin-top: 7em;
-    font-size: 25px;
-    color: rgb(228, 236, 230);
+    margin-top: 15em;
+    font-style: oblique;
 }
 
-h1{
-    text-align: center;
-    margin: 1em;
-
-}
 
 .contactcustom{
     margin: auto;
+    color:#194e6a;
 }
 
 .usermessage{
@@ -101,8 +147,10 @@ h1{
 
 }
 
+/* package card hover*/
 .card:hover{
-    background-color: rgb(236, 243, 243);
+    background-color:rgb(205, 236, 236);
+    font-weight: bolder;
 }
 
 #googlemap{
@@ -121,4 +169,156 @@ h1{
 
 #edmonton{
     margin-top: 2em;
+}
+
+/* Aligns contents of index page to center */
+#mypackage{
+    padding: 80px 0;
+    text-align: center;
+  }
+
+#mypackagebuy{
+    padding: 80px 0;
+    text-align: center;
+    background-color: white;
+ }
+
+#mypackagebuy .card{
+    border: transparent;
+}
+
+#mypackagebuy  .card:hover{
+    background-color:white;
+    font-weight: bolder;
+}
+
+#mylocations{
+padding: 80px 0;
+text-align: center;
+}
+.btn-danger{
+    color:white;
+    transition-duration: 0.3s;
+    text-align: center;
+    width: 30%;
+}
+
+
+/* Package cards button*/  
+.card-group.gap-3 .btn-primary{
+    color:white;
+    background-color: #236c93;
+    transition-duration: 0.3s;
+    text-align: center;
+    width: 50%;
+}
+/* contact form button*/ 
+.contactcustom .btn-primary{
+    color:white;
+    background-color: #236c93;
+    transition-duration: 0.3s;
+    text-align: center;
+    width: 40%;
+    position:-ms-page;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+#mypackage .btn-primary{
+    color:white;
+    background-color: #236c93;
+    text-align: center;
+    width: 90%;
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.25vw;
+    position: middle;
+
+
+}
+
+.btn-primary:hover{
+    color:white;
+    background-color:#194e6a;
+ 
+}
+
+#signup .btn-primary{
+    width: 65%
+}
+
+#mylocations .card-img-top{
+    height: 300px;
+}
+
+  /* Dotted border for displaycontacts */
+  hr.rounded {
+    border-top: 4px solid blue;
+    border-radius: 5px;
+  }
+
+
+/* -------------------------------------------------------------------------------  */
+/* ------------------------------- Fariha Siddiqui -------------------------------  */
+/* -----------------------------Student ID: 000880957 ----------------------------  */
+/* -------------------------------Date: 12-08-2021 -------------------------------  */
+/* -------------------Purpose: THREADED PROJECT OF PROJ-009-004 ------------------  */
+/* -------------------------------------------------------------------------------  */
+/* --------------------------------------start------------------------------------  */
+
+
+/* ------------------------------ Badge Design -------------------------------  */
+
+sup { 
+    font-size: .45em;
+    float: right; 
+    vertical-align:middle; 
+    margin-left:-15px; 
+    margin-top: 10px; 
+    font-weight: 6; 
+} 
+
+/* ------------------------------- Styling Booking Details -------------------------------  */
+
+.cost-details { 
+    border: 2px solid; 
+} 
+
+/* ------------------------------- Styling Buttons -------------------------------  */
+
+.column-3{
+    flex: 0 0 auto;
+    width: 25%;
+    background-color: #236c93!important; 
+    margin-right: 50px;
+}
+    
+/* ------------------------------- Styling Booking List -------------------------------  */
+
+.bookings { 
+    border-radius: .55rem; 
+    border: 3px solid rgba(0,0,0,.125); 
+} 
+
+/* ------------------------------- Styling Header of Booking Details -------------------------------  */
+
+.bookhead{
+
+    background-color: #236c93!important;
+    color: white;
+}
+
+/* -------------------------------------------------------------------------------  */
+/* ------------------------------- Fariha Siddiqui -------------------------------  */
+/* --------------------------------------end------------------------------------  */
+
+
+
+/* Logo responsive */
+.img-responsive {
+    height: auto;
+    width: auto;
+    max-height: 55px;
+    max-width: 250px;
 }

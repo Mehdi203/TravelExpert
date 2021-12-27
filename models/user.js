@@ -1,4 +1,5 @@
-// Require the mongoose module//
+//Written by Mohammadmehdi Noroozi(Mehdi)
+
 var mongoose = require('mongoose');
 
 var uniqueValidator = require('mongoose-unique-validator');
@@ -70,8 +71,15 @@ var uniqueValidator = require('mongoose-unique-validator');
       type: String,
       trim: true,
       default: "customer",
-      // enum: ['admin', 'user']
     },
+
+    CustomerId: { 
+
+            type: Number, 
+      
+            default: Math.floor(1000 + Math.random() * 9000), 
+      
+          },     
   });
   
   userSchema.plugin(uniqueValidator);

@@ -1,20 +1,74 @@
+//- 
+  // --------------------------- Booking-list.pug file --------------------------- //
+
+  //**
+     * Name: Fariha Siddiqui
+     * Student ID: 000880957
+     * Date: 12-08-2021
+     * Purpose: THREADED PROJECT OF PROJ-009-004
+     ** //
+
+  // ---------------------------------------------------------------------------- //
+
+
 extends layout
 
 block content
-  h1= title
-  p Welcome to #{title}
-  
+  title Booking List
+
+
+  .banner
+    .card.bg-dark.text-white
+      img#mybanner.card-img(src='/images/passport.jpg' alt='Travel Experts')
+      .card-img-overlay
+
+
+  if bookings == ""
+    br
+    br
+    br
+    h3
+      i &nbsp;&nbsp;&nbsp;&nbsp; You have not booked any of our exclusive packages yet. Browse our packages by clicking 
+        a(href="/" target='_blank') here.
+    br
+  else  
     .container
-      h2.bg-info All Bookings
-        .row
-          each booking in bookings
-            .card.col-lg-3.col-md-4.col-sm-12
-              a(href='/booking/' + booking.BookingNo)
-                //img.card-img-top(src=booking.image height="200")
-              .card-body
-                a(href='/booking/' + booking.BookingId)
-                  h5.card-title= booking.BookingNo
-                h6.card-text
-                  | Passengers: #{booking.TravelerCount}
-                  | CustomerID: #{booking.CustomerId}
-    
+    h2.h1-responsive.font-weight-bold.text-center.my-4 #{title}
+    p=bookings.BookingNo
+      .container
+        h3.bg-light    
+          .row
+
+
+            each booking in bookings
+              .card.col-lg-3.col-md-4.col-sm-12.bookings
+                a(href='/booking/' + booking.BookingNo target='_blank')
+
+                  // --------------------------- Checking if booking Cancelled by Customer --------------------------- //
+
+                  if !oldBooking
+                    if booking.Active
+                      sup
+                        span.badge.rounded-pill.bg-success Active
+                    else
+                      sup
+                        span.badge.rounded-pill.bg-secondary Inactive
+                  else 
+                      span.badge.rounded-pill.bg-secondary Inactive                  
+
+                // --------------------------- Booking Details --------------------------- //
+                .card-body
+                  a(href='/booking/' + booking.BookingId target='_blank')
+                    h5.card-title= booking.BookingNo
+                  h6.card-text
+                    | Booked: #{booking.BookingDate.toDateString()}
+                  h6.card-text
+                    | Passengers: #{booking.TravelerCount}
+                  h6.card-text
+                    | Trip Type: #{booking.TripTypeId}
+                  h6.card-text
+                    |  Package ID: #{booking.PackageId}
+                  h6.card-text
+                    |  Package ID: #{booking.BookingId}
+                  br
+

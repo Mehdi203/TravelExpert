@@ -1,0 +1,58 @@
+extends layout
+
+block content
+  br
+  br
+  br
+  Add Location
+  br
+  br
+  .container 
+    h1= title
+    if add
+      h3 Add new location
+    else 
+      h3 Add/Edit location
+    br
+    form.row.g-3(method='POST' action="")
+      .col-md-6
+        label.form-label(for='lname') Name of Location
+        input#inputlname.form-control(type='text' name='lname' required value= loc && loc.lname)
+      .col-md-6
+        label.form-label(for='laddress') Address
+        input#inputladdress.form-control(type='text' name='laddress' required  value=loc && loc.laddress)
+      .col-md-6
+        label.form-label(for='lcity') City
+        input#inputlcity.form-control(type='text' name='lcity' required value= loc && loc.lcity)
+      .col-md-6
+        label.form-label(for='lprovince') State/Province
+        input#inputlprovince.form-control(type='text' name='lprovince' required  value=loc && loc.lprovince)
+      .col-md-6
+        label.form-label(for='lcountry') Counrty
+        input#inputlcountry.form-control(type='text' name='lcountry' required value= loc && loc.lcountry)
+      .col-md-6
+        label.form-label(for='lphone') Phone
+        input#inputlphone.form-control(type='text' name='lphone' required  value=loc && loc.lphone)
+      .col-md-6
+        label.form-label(for='lfax') Fax
+        input#inputlfax.form-control(type='text' name='lfax' required  value=loc && loc.lfax)
+      .col-md-6
+        label.form-label(for='lemail') E-mail
+        input#inputlemail.form-control(type='text' name='lemail' required  value=loc && loc.lemail)
+      .col-md-6
+        label.form-label(for='inputimage') Image
+        input#inputimage.form-control(type='text' placeholder='image.jpg' name='image'  value=loc && loc.image)    
+
+      .col-md-6
+        button.btn.btn-primary.col-12.mt-4(type='submit') 
+          if add
+            | Add Location
+          else 
+            | Update Location
+        a.btn.btn-primary.col-12.mt-4(href=add ? '/' : '/location/details/' + (loc && loc ._id)) Cancel
+
+    .container
+        if errors    
+          each error in errors
+              p.alert.alert-danger= error
+
