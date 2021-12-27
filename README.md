@@ -8,23 +8,24 @@ This website is the main business presentation to the agency clients and also pr
 ## Main Feature
 ![Feature1!](./websiteImages/mainFeatures.jpg)
 ![Feature2!](./websiteImages/mainFeatures2.jpg)
-![Feature3!](./websiteImages/salesCommsision.jpg)
+
 
 ## Tools & Technologies
-![Technologies!](./websiteImages/tools.jpg
+![Technologies!](./websiteImages/tools.jpg)
 
 ## Performance View for Admins
-![Admins1!](./websiteImages/managers.jpg
-![Admins2!](./websiteImages/managers2.jpg
+![Admins1!](./websiteImages/managers.jpg)
+![Admins2!](./websiteImages/managers2.jpg)
+![Feature3!](./websiteImages/salesCommsision.jpg)
 
 ## Performance View for Agents
-![Agents!](./websiteImages/agents.jpg
+![Agents!](./websiteImages/agents.jpg)
 
 ## Add New Agents
-![Add Agent!](./websiteImages/addNewAgents.jpg
+![Add Agent!](./websiteImages/addNewAgents.jpg)
 
 ## Booking
-![Booking!](./websiteImages/booking.jpg
+![Booking!](./websiteImages/booking.jpg)
 
 ## Check-out
-![Checkout!](./websiteImages/checkout.jpg
+![Checkout!](./websiteImages/checkout.jpg)
