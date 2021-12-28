@@ -1,4 +1,4 @@
-//Written by George(Xiaoyin Zhou)
+//Written by Xiaoyin Zhou
 
 var express = require('express');
 var router = express.Router();
